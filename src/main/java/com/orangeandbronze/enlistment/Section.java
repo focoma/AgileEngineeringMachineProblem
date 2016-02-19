@@ -19,6 +19,15 @@ public class Section {
 		this.room = room;
 	}
 	
+	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
+		if(!sectionId.matches("^[a-zA-Z0-9]*$")) {
+			throw new SectionIdException(sectionId);
+		}
+		this.sectionId = sectionId;
+		this.schedule = schedule;
+		this.room = room;
+	}
+	
 	void addStudentInSection(Integer newStudent) {
 		room.checkRoomCapacity(students.size());
 		students.add(new Student(newStudent));

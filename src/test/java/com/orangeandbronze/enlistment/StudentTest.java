@@ -57,5 +57,14 @@ public class StudentTest {
 		firstStudent.enlist(sectionRose);
 		secondStudent.enlist(sectionRose);
 	}
+	
+	@Test (expected = RoomCapacityExceedsException.class)
+	public void enlistSectionExceedsRoomCapacity1() {
+		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1));
+		Student firstStudent = new Student(1);
+		Student secondStudent = new Student(2);
+		firstStudent.enlist(sectionRose);
+		secondStudent.enlist(sectionRose);
+	}
 
 }
