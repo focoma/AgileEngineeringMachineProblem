@@ -2,15 +2,8 @@
 EnlistmentSystem.iml
 target/*
 *.class
-<<<<<<< HEAD
-*.classpath
-*.project
-UniversityEnlistmentTeamFrontLeft.iml
-*.iml
-
-=======
 /bin/
 *.classpath
 *.project
 UniversityEnlistmentTeamFrontLeft.iml
->>>>>>> 7c36f0ed2c2c4dc3f920b40d623d0d87738d1244
+*.iml

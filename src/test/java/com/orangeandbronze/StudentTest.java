@@ -30,6 +30,7 @@ public class StudentTest {
         student.enlist(s2);
     }
 
+
     @Test
     public void enlistStudentWithoutExceedingCapacity(){
         new Room("room1",3);
