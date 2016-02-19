@@ -11,7 +11,7 @@ public class Subject {
 	
 	void checkPreRequisites(Subject subj){
 		if(this.equals(subj)) {
-			throw new PreRequisiteSubjectRequiredException(this, subj);
+			throw new PreRequisiteSubjectRequiredException("The subject " + subj);
 		}
 	}
 }
