@@ -4,6 +4,11 @@ public class Subject {
 	private final String subjectName;
 	private final String preRequisites;
 	
+	public Subject(String subjectName){
+		this.subjectName = subjectName;
+		this.preRequisites = "";
+	}
+	
 	public Subject(String subjectName, String preRequisites){
 		if(hasSubjectAndPreRequisitesValidation(subjectName, preRequisites)) {
 			throw new SubjectNameException(subjectName, preRequisites);
