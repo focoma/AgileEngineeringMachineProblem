@@ -12,7 +12,7 @@ public class SectionTest {
 
     @Test
     public void sectionIdAlphanumeric() {
-        new Section(SECTION, SCHEDULE, new Room(ROOM101, 2));
+        new Section(SECTION, SCHEDULE_H0830 , new Room(ROOM101, 2));
     }
 
 }

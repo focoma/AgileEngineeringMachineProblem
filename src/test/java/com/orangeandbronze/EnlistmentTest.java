@@ -9,7 +9,6 @@ import java.util.Collection;
 
 import static com.orangeandbronze.Default.*;
 import static com.orangeandbronze.Default.ROOM102;
-import static com.orangeandbronze.Default.SCHEDULE;
 import static org.junit.Assert.*;
 
 /**
