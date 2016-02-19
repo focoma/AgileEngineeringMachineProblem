@@ -9,23 +9,23 @@ public class SectionTest {
 
 	@Test
 	public void sectionIdAlphanumeric() {
-		new Section("ROSE", SCHEDULE, ROOM);
-		new Section("SAMPAGUITA", SCHEDULE, ROOM);
+		new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"));
+		new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("English"));
 	}
 	
 	@Test (expected = SectionIdException.class)
 	public void sectionIdHasWhiteSpace() {
-		new Section("ROSE SAMPAGUITA", SCHEDULE, ROOM);
+		new Section("ROSE SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math"));
 	}
 
 	@Test (expected = SectionIdException.class)
 	public void sectionIdHasUnderscore() {
-		new Section("ROSE_SAMPAGUITA", SCHEDULE, ROOM);
+		new Section("ROSE_SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math"));
 	}	
 	
 	@Test (expected = SectionIdException.class)
 	public void sectionIdHasAmpersand() {
-		new Section("ROSE&SAMPAGUITA", SCHEDULE, ROOM);
+		new Section("ROSE&SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math"));
 	}
 
 }
