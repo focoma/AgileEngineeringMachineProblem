@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 kahitano
 
+=======
+test
+>>>>>>> c0f7c6f5338cfb2c89433d190ce37d2fa7a8b15d
