@@ -1,0 +1,8 @@
+-Student(Integer studentID, Section section)
+-Section (String sectionID, Room, Schedule, String SemesterID, String SubjectID)
+	-Room(roomID, capacity)
+	-Schedule(Day, Period) *reuse
+	-Subject(), Subject(Subject Prereq)
+-Semester - findById(String semesterId)(Student, Section)
+
+
