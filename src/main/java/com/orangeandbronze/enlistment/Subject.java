@@ -5,6 +5,9 @@ public class Subject {
 	private final String preRequisites;
 	
 	public Subject(String subjectName, String preRequisites){
+		if(subjectName.equals(preRequisites)) {
+			throw new SubjectNameException(subjectName, preRequisites);
+		}
 		this.subjectName = subjectName;
 		this.preRequisites = preRequisites;
 	}
