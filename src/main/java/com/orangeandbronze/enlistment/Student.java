@@ -17,9 +17,7 @@ public class Student {
 	}
 	
 	public void enlist(Section newSection) {
-		for(Section currentSection : sections) {
-			currentSection.checkForConflictWith(newSection);
-		}
+		sections.forEach(currentSection -> currentSection.checkForConflictWith(newSection));
 		newSection.addStudentInSection(studentNumber);
 		sections.add(newSection);
 	}
