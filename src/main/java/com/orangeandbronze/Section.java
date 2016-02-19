@@ -9,7 +9,24 @@ public class Section {
     private final Schedule schedule;
     private final Room room;
     private final Collection<Student> classList = new HashSet<Student>();
+    private int studentCounter;
 //	private final Subjects subject;
+    
+    public void setStudentCounter() {
+    	studentCounter++;
+    }
+    
+    public int getStudentCounter() {
+    	return studentCounter;
+    }
+    
+    public int getRoomMaxCapacity() {
+    	return room.getMaxCapacity();
+    }
+    
+    public boolean canAddNewSection() {
+    	return studentCounter < getRoomMaxCapacity();
+    }
 
     public Section(String sectionId, Schedule schedule, Room room) {
         if (!sectionId.matches("^[a-zA-Z0-9]*$")) {
@@ -28,17 +45,15 @@ public class Section {
         }
     }
 
-
-
     public void enlist(Student newStudent) {
-        for (Student currentStudent : classList) {
-            currentStudent.checkForConflictWith(newStudent);
-        }
-
-        if(classList.size() != room.getMaxCapacity()) {
+//        for (Student currentStudent : classList) {
+//            currentStudent.checkForConflictWith(newStudent);
+//        }
+        if(studentCounter <= room.getMaxCapacity()) {
             classList.add(newStudent);
-        } else
-            throw new RoomCapacityException(room+ " had reach it's maximum capacity");
+        } else {
+            throw new RoomCapacityException(room+ " had reach it's maximum capacity"); 
+        }
     }
 
     Schedule getSchedule() {

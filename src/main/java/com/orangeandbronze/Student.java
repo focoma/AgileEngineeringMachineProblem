@@ -8,7 +8,7 @@ public class Student {
 
     private final Integer studentNumber;
     private final Collection<Section> sections = new HashSet<Section>();
-    private final Collection<Student> classList = new HashSet<Student>();
+    //private final Collection<Student> classList = new HashSet<Student>();
 
     public Student(Integer studentNumber) {
         if (studentNumber < 0) {
@@ -21,8 +21,13 @@ public class Student {
         for (Section currentSection : sections) {
             currentSection.checkForConflictWith(newSection);
         }
-        sections.add(newSection);
-        newSection.enlist(this);
+        
+        if(newSection.canAddNewSection()) {
+        	sections.add(newSection);
+        	newSection.setStudentCounter();
+        } else {
+       	 	throw new RoomCapacityException(newSection.getRoomMaxCapacity() + " had reach it's maximum capacity");       
+        }
     }
 
     void checkForConflictWith(Student other) {
