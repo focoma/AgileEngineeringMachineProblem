@@ -2,7 +2,11 @@ package com.orangeandbronze.enlistment;
 
 public class Subject {
 	private final String subjectName;
-	private final String preRequisites;
+	private String preRequisites = "";
+	
+	public Subject(String subjectName){
+		this.subjectName = subjectName;
+	}
 	
 	public Subject(String subjectName, String preRequisites){
 		if(subjectName.equals(preRequisites)) {
