@@ -5,11 +5,15 @@ public class Subject {
 	private final String preRequisites;
 	
 	public Subject(String subjectName, String preRequisites){
-		if(subjectName.equals(preRequisites)) {
+		if(hasSubjectAndPreRequisitesValidation(subjectName, preRequisites)) {
 			throw new SubjectNameException(subjectName, preRequisites);
 		}
 		this.subjectName = subjectName;
 		this.preRequisites = preRequisites;
+	}
+	
+    boolean hasSubjectAndPreRequisitesValidation(String subject, String preRequisites){
+		return (subject == null || preRequisites == null || subject.equals(preRequisites));
 	}
 	
 	void checkPreRequisites(Subject subj){
@@ -55,7 +59,7 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "Subject [subjectName=" + subjectName + ", preRequisites=" + preRequisites + "]";
+		return "subjectName=" + subjectName + ", preRequisites=" + preRequisites + "";
 	}
 	
 	
