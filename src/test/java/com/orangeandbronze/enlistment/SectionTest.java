@@ -27,5 +27,11 @@ public class SectionTest {
 	public void sectionIdHasAmpersand() {
 		new Section("ROSE&SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math", null));
 	}
+	
+	@Test
+	public void sectionHasSubjectWithPreRequisite() {
+		new Section("ROSE", SCHEDULE, ROOM, new Subject("Math1", null));
+		new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math2", "Math1"));
+	}
 
 }
