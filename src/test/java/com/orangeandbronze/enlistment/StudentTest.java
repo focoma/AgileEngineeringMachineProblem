@@ -60,7 +60,8 @@ public class StudentTest {
 	
 	@Test (expected = RoomCapacityExceedsException.class)
 	public void enlistSectionExceedsRoomCapacity1() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1));
+		Subject subj1 = new Subject("MATH101");
+		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), subj1);
 		Student firstStudent = new Student(1);
 		Student secondStudent = new Student(2);
 		firstStudent.enlist(sectionRose);
