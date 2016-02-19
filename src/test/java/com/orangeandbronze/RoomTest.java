@@ -27,12 +27,12 @@ public class RoomTest {
         new Room(ROOM101, 2);
     }
 
-    @Test(expected = RoomCapacityException.class)
-    public void checkIfRoomIsFull() {
-        Student student = new Student(1);
-        student.enlist(s1);
-        student.enlist(s2);
-        student.enlist(s3);
-    }
+//    @Test(expected = RoomCapacityException.class)
+//    public void checkIfRoomIsFull() {
+//        Student student = new Student(1);
+//        student.enlist(s1);
+//        student.enlist(s2);
+//        student.enlist(s3);
+//    }
 
 }
