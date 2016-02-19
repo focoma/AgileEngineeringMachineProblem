@@ -13,9 +13,13 @@ public class Subject {
 	}
 	
 	void checkPreRequisites(Subject subj){
-		if(this.equals(subj)) {
+		if(preRequisites.equals(subj.getSubjectName())) {
 			throw new PreRequisiteSubjectRequiredException("The subject " + subj + " has a prerequisite of subject " + preRequisites);
 		}
+	}
+	
+	public String getSubjectName(){
+		return subjectName;
 	}
 
 	@Override

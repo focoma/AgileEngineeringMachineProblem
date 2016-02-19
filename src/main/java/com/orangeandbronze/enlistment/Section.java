@@ -23,6 +23,7 @@ public class Section {
 	
 	void addStudentInSection(Integer newStudent) {
 		room.checkRoomCapacity(students.size());
+		subject.checkPreRequisites(subject);
 		students.add(new Student(newStudent));
 	}
 	
