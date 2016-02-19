@@ -6,6 +6,6 @@ public class SubjectTest {
 
 	@Test
 		public void SubjectNameIsAlphaNumeric() {
-			new Subject("Math101");
+			new Subject("Math101", null);
 	}
 }
