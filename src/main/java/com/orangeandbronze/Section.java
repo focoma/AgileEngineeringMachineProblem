@@ -36,7 +36,7 @@ public class Section {
 
 
     public void checkForConflict(Section other) {
-        if(other.getSchedule().equals(schedule)) {
+        if(other.getSchedule().equals(other.schedule)) {
             throw new ScheduleConflictException("conflict section, " + other);
         }
     }

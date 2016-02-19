@@ -2,3 +2,8 @@
 EnlistmentSystem.iml
 target/*
 *.class
+*.classpath
+*.project
+UniversityEnlistmentTeamFrontLeft.iml
+*.iml
+

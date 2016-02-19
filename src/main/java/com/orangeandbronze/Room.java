@@ -34,8 +34,6 @@ public class Room {
 
     }
 
-    //TODO: toString()
-
     @Override
     public String toString() {
         return "Room name " + roomName;

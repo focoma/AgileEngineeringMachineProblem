@@ -13,35 +13,18 @@ public class Student {
     private final Collection<Section> sections = new HashSet<Section>();
 
     public Student(Integer studentNumber) {
-        if(studentNumber < 0){
+        if (studentNumber < 0) {
             throw new IllegalArgumentException("Student number should be non-negative, was " + studentNumber);
         }
         this.studentNumber = studentNumber;
     }
 
     public void enlist(Section newSection) {
-        for(Section s: sections) {
-            s.checkForConflict(newSection);
-
-//            if(s.getCounterList() > s.getRoomMaxCapacity()){
-//                throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
-//            }
-//            s.getRoomMaxCapacity();
+        for (Section currentSection : sections) {
+            currentSection.checkForConflict(newSection);
         }
-        // get number of students per section
-        // check if room is full
-        if( sections.size() < newSection.getRoomMaxCapacity()) {
-            sections.add(newSection);
-        } else {
-            throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
-        }
-
-
+        sections.add(newSection);
     }
-
-
-
-
 
     public Collection<Section> getSection() {
         return new HashSet<Section>(sections);
