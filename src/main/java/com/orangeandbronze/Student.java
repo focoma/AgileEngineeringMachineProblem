@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-/**
- * Created by training on 2/19/16.
- */
 public class Student {
 
     private final Integer studentNumber;
     private final Collection<Section> sections = new HashSet<Section>();
+    private final Collection<Student> classList = new HashSet<Student>();
 
     public Student(Integer studentNumber) {
         if (studentNumber < 0) {
@@ -21,17 +19,20 @@ public class Student {
 
     public void enlist(Section newSection) {
         for (Section currentSection : sections) {
-            currentSection.checkForConflict(newSection);
+            currentSection.checkForConflictWith(newSection);
         }
         sections.add(newSection);
+        newSection.enlist(this);
     }
 
-    public Collection<Section> getSection() {
-        return new HashSet<Section>(sections);
+    void checkForConflictWith(Student other) {
+        if (this.studentNumber.equals(other.studentNumber)) {
+            throw new RuntimeException("Cannot Input same student!!!");
+        }
     }
 
-    public boolean hasSection(Section section) {
-        return this.sections.contains(section);
+    Collection<Section> getSections() {
+        return new ArrayList<Section>(sections);
     }
 
     @Override
@@ -40,18 +41,27 @@ public class Student {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Student student = (Student) o;
-
-        return studentNumber.equals(student.studentNumber);
-
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((studentNumber == null) ? 0 : studentNumber.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return studentNumber.hashCode();
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Student other = (Student) obj;
+        if (studentNumber == null) {
+            if (other.studentNumber != null)
+                return false;
+        } else if (!studentNumber.equals(other.studentNumber))
+            return false;
+        return true;
     }
 }

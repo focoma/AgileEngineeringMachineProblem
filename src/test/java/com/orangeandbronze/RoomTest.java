@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static com.orangeandbronze.Default.*;
-import static com.orangeandbronze.Default.s1;
 import static org.junit.Assert.assertEquals;
 
 
@@ -27,12 +26,45 @@ public class RoomTest {
         new Room(ROOM101, 2);
     }
 
-//    @Test(expected = RoomCapacityException.class)
-//    public void checkIfRoomIsFull() {
-//        Student student = new Student(1);
-//        student.enlist(s1);
-//        student.enlist(s2);
-//        student.enlist(s3);
-//    }
+    @Test(expected = RoomCapacityException.class)
+    public void roomExceedsCapacity() {
+        Student student1 = new Student(001);
+        Student student2 = new Student(002);
+        Student student3 = new Student(003);
+        Student student4 = new Student(004);
+
+        Section section1 = new Section("Section1", SCHEDULE, new Room(ROOM101, 4));
+        Section section2 = new Section("Section2", SCHEDULE_H1000, new Room(ROOM102, 3));
+
+        student1.enlist(section1);
+        student2.enlist(section1);
+        student3.enlist(section1);
+        student4.enlist(section1);
+
+        student1.enlist(section2);
+        student2.enlist(section2);
+        student3.enlist(section2);
+        student4.enlist(section2);
+    }
+
+    @Test
+    public void roomDoesNotExceedsCapacity() {
+        Student student1 = new Student(001);
+        Student student2 = new Student(002);
+        Student student3 = new Student(003);
+        Student student4 = new Student(004);
+
+        Section section1 = new Section("Section1", SCHEDULE, new Room(ROOM101, 3));
+        Section section2 = new Section("Section2", new Schedule(Days.TF, Period.H0830), new Room(ROOM101, 4));
+
+        student1.enlist(section1);
+        student2.enlist(section1);
+        student3.enlist(section1);
+
+        student1.enlist(section2);
+        student2.enlist(section2);
+        student3.enlist(section2);
+        student4.enlist(section2);
+    }
 
 }

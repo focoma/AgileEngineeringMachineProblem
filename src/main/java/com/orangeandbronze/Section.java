@@ -1,72 +1,78 @@
 package com.orangeandbronze;
 
-import com.orangeandbronze.utils.EnlistmentUtils;
-
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
-/**
- * Created by training on 2/19/16.
- */
 public class Section {
 
     private final String sectionId;
     private final Schedule schedule;
     private final Room room;
-    private int counterList;
-
-    public int getCounterList() {
-        return counterList;
-    }
+    private final Collection<Student> classList = new HashSet<Student>();
+//	private final Subjects subject;
 
     public Section(String sectionId, Schedule schedule, Room room) {
-        if(!sectionId.matches(EnlistmentUtils.alphanumeric)){
-            throw new IllegalArgumentException("Invalid sectionId " + sectionId);
+        if (!sectionId.matches("^[a-zA-Z0-9]*$")) {
+            throw new IllegalArgumentException("Section ID must be alphanumeric, was: " + sectionId);
         }
-
         this.sectionId = sectionId;
         this.schedule = schedule;
         this.room = room;
+        //	this.subject = subject;
     }
 
 
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-
-    public void checkForConflict(Section other) {
-        if(other.getSchedule().equals(other.schedule)) {
-            throw new ScheduleConflictException("conflict section, " + other);
+    void checkForConflictWith(Section other) {
+        if (this.schedule.equals(other.schedule)) {
+            throw new ScheduleConflictException(this, other);
         }
     }
 
-    public boolean isExisting( Student students, Section section) {
-        return students.getSection().contains(section);
+
+
+    public void enlist(Student newStudent) {
+        for (Student currentStudent : classList) {
+            currentStudent.checkForConflictWith(newStudent);
+        }
+
+        if(classList.size() != room.getMaxCapacity()) {
+            classList.add(newStudent);
+        } else
+            throw new RoomCapacityException(room+ " had reach it's maximum capacity");
     }
 
-    public int getRoomMaxCapacity() {
-        return room.getMaxCapacity();
+    Schedule getSchedule() {
+        return schedule;
     }
 
     @Override
     public String toString() {
-        return "Section ID: " + sectionId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Section section = (Section) o;
-
-        return sectionId.equals(section.sectionId);
-
+        return sectionId;
     }
 
     @Override
     public int hashCode() {
-        return sectionId.hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((sectionId == null) ? 0 : sectionId.hashCode());
+        return result;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Section other = (Section) obj;
+        if (sectionId == null) {
+            if (other.sectionId != null)
+                return false;
+        } else if (!sectionId.equals(other.sectionId))
+            return false;
+        return true;
+    }
+
 }
