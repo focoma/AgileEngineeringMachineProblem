@@ -22,7 +22,7 @@ public class Default {
     public final static Schedule SCHEDULE_H1000 = new Schedule(Days.MTH, Period.H1000);
     public final static Schedule SCHEDULE_H1130 = new Schedule(Days.MTH, Period.H1130);
 
-    public final static Room  ROOM1 = new Room(ROOM101, 2);
+    public final static Room  ROOM1 = new Room(ROOM101, 5);
     public final static Room  ROOM2 = new Room(ROOM101, 2);
     public final static Room  ROOM3 = new Room(ROOM101, 2);
 

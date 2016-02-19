@@ -23,18 +23,18 @@ public class Student {
         for(Section s: sections) {
             s.checkForConflict(newSection);
 
-            if(s.getCounterList() > s.getRoomMaxCapacity()){
-                throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
-            }
+//            if(s.getCounterList() > s.getRoomMaxCapacity()){
+//                throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
+//            }
 //            s.getRoomMaxCapacity();
         }
         // get number of students per section
         // check if room is full
-//        if( < newSection.getRoomMaxCapacity()) {
+        if( sections.size() < newSection.getRoomMaxCapacity()) {
             sections.add(newSection);
-//        } else {
-//            throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
-//        }
+        } else {
+            throw new RoomCapacityException("Exceeeded room max capacity , " + newSection.getRoomMaxCapacity() + " section size:" + sections.size() );
+        }
 
 
     }
