@@ -8,16 +8,8 @@ public class Section {
 	private final String sectionId;
 	private final Schedule schedule;
 	private final Room room;
+	private final Subject subject;
 	private Collection<Student> students = new HashSet<>();
-	
-	public Section(String sectionId, Schedule schedule, Room room) {
-		if(!sectionId.matches("^[a-zA-Z0-9]*$")) {
-			throw new SectionIdException(sectionId);
-		}
-		this.sectionId = sectionId;
-		this.schedule = schedule;
-		this.room = room;
-	}
 	
 	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
 		if(!sectionId.matches("^[a-zA-Z0-9]*$")) {
@@ -26,6 +18,7 @@ public class Section {
 		this.sectionId = sectionId;
 		this.schedule = schedule;
 		this.room = room;
+		this.subject = subject;
 	}
 	
 	void addStudentInSection(Integer newStudent) {
