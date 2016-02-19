@@ -2,6 +2,8 @@ package com.orangeandbronze;
 
 import static com.orangeandbronze.Default.ROOM1_5;
 import static com.orangeandbronze.Default.SCHEDULE_H0830;
+import static com.orangeandbronze.SemesterEnum.S_FIRST_SEM;
+import static com.orangeandbronze.SemesterEnum.S_SECOND_SEM;
 
 /**
  * Created by training on 2/19/16.
@@ -32,9 +34,15 @@ public class Default {
     public final static Room  ROOM2_2 = new Room(ROOM102, 2);
     public final static Room  ROOM3_1 = new Room(ROOM103, 1);
     
-    public final static Section SECTION1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5);
-    public final static Section SECTION2 = new Section(SECTION2_NAME, SCHEDULE_H0830, ROOM2_2);
-    public final static Section SECTION3 = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM3_1);
+    
+    public final static Subject SUBJECT_MATH_01 = new Subject(1, new SubjectPrerequisite(null));
+    public final static Subject SUBJECT_MATH_02 = new Subject(2, new SubjectPrerequisite(1));
+    
+    
+    public final static Section SECTION1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5, SUBJECT_MATH_01, S_FIRST_SEM);
+    public final static Section SECTION1_1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5, SUBJECT_MATH_02, S_SECOND_SEM);
+    public final static Section SECTION2 = new Section(SECTION2_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_02, S_SECOND_SEM);
+    public final static Section SECTION3 = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM3_1, SUBJECT_MATH_01, S_FIRST_SEM);
     
 //    public final static Section SECTION11_ = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5);
 //    public final static Section SECTION22 = new Section(SECTION2_NAME, SCHEDULE_H0830, ROOM2_2);

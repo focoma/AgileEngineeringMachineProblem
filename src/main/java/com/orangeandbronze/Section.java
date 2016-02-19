@@ -10,11 +10,14 @@ public class Section {
     private final Room room;
     private final Collection<Student> classList = new HashSet<Student>();
     private int studentCounter;
-//	private final Subjects subject;
+	private final Subject subject;
+	private final SemesterEnum semester;
     
     public void setStudentCounter() {
     	studentCounter++;
     }
+    
+   
     
     public int getStudentCounter() {
     	return studentCounter;
@@ -27,15 +30,23 @@ public class Section {
     public boolean canAddNewSection() {
     	return studentCounter < getRoomMaxCapacity();
     }
+    
+    public Subject getSubject() {
+    	return subject;
+    }
 
-    public Section(String sectionId, Schedule schedule, Room room) {
+    public Section(String sectionId, 
+    		Schedule schedule, 
+    		Room room, 
+    		Subject subject, SemesterEnum semester) {
         if (!sectionId.matches("^[a-zA-Z0-9]*$")) {
             throw new IllegalArgumentException("Section ID must be alphanumeric, was: " + sectionId);
         }
         this.sectionId = sectionId;
         this.schedule = schedule;
         this.room = room;
-        //	this.subject = subject;
+        this.subject = subject;
+        this.semester = semester;
     }
 
 
@@ -44,28 +55,38 @@ public class Section {
             throw new ScheduleConflictException(this, other);
         }
     }
-
-    public void enlist(Student newStudent) {
-//        for (Student currentStudent : classList) {
-//            currentStudent.checkForConflictWith(newStudent);
-//        }
-        if(studentCounter <= room.getMaxCapacity()) {
-            classList.add(newStudent);
-        } else {
-            throw new RoomCapacityException(room+ " had reach it's maximum capacity"); 
+    
+    void checkForExistingSubject(Section newSection) {
+    	if(newSection.getSubject() == getSubject()){
+        	throw new ExistingSubjectException(newSection.getSubject());
         }
     }
+
+//    public void enlist(Student newStudent) {
+////        for (Student currentStudent : classList) {
+////            currentStudent.checkForConflictWith(newStudent);
+////        }
+//        if(studentCounter <= room.getMaxCapacity()) {
+//            classList.add(newStudent);
+//        } else {
+//            throw new RoomCapacityException(room+ " had reach it's maximum capacity"); 
+//        }
+//    }
 
     Schedule getSchedule() {
         return schedule;
     }
 
-    @Override
-    public String toString() {
-        return sectionId;
-    }
+    
 
     @Override
+	public String toString() {
+		return "Section [sectionId=" + sectionId + ", schedule=" + schedule + ", room=" + room + ", classList="
+				+ classList + ", studentCounter=" + studentCounter + ", subject=" + subject + ", semester=" + semester
+				+ "]";
+	}
+
+	@Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

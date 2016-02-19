@@ -20,14 +20,29 @@ public class Student {
     public void enlist(Section newSection) {
         for (Section currentSection : sections) {
             currentSection.checkForConflictWith(newSection);
+            
+            currentSection.checkForExistingSubject(newSection);
+            
+//            if(currentSection.getSubject().){
+//            	
+//            }
+            
+            
         }
         
+        // Cannot Enlist when Room capacity exceeded.
         if(newSection.canAddNewSection()) {
         	sections.add(newSection);
         	newSection.setStudentCounter();
         } else {
        	 	throw new RoomCapacityException(newSection.getRoomMaxCapacity() + " had reach it's maximum capacity");       
         }
+        
+        // Cannot Enlist in section, if any of his currently-enlisted sections
+        // has the same subject as that section
+        
+        
+        
     }
 
     void checkForConflictWith(Student other) {
