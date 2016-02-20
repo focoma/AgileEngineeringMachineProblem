@@ -1,8 +1,10 @@
 package com.orangeandbronze.enlistment.domain;
 
+import static com.orangeandbronze.enlistment.domain.Defaults.SCHEDULE;
+import static com.orangeandbronze.enlistment.domain.Defaults.SUBJECT_NO_PREREQ;
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
-import static com.orangeandbronze.enlistment.domain.Defaults.*;
 
 public class StudentTest {
 
@@ -59,5 +61,15 @@ public class StudentTest {
 		stud1.enlist(section);
 		stud2.enlist(section);
 		stud3.enlist(section);
+	}
+	
+	@Test(expected = SubjectConflictException.class)
+	public void enlistToSectionWithNoScheduleConflictButHasSubjectConflict() {
+		Student student = new Student(1);
+		Room room = new Room("R102", 2);
+		Section section1 = new Section("A", SCHEDULE, room, SUBJECT_NO_PREREQ);
+		Section section2 = new Section("B", new Schedule(Days.TF, Period.H0830), room, SUBJECT_NO_PREREQ);
+		student.enlist(section1);
+		student.enlist(section2);
 	}
 }
