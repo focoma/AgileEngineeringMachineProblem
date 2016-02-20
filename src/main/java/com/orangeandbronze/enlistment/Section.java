@@ -36,7 +36,7 @@ public class Section {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Section ID: " + sectionId + " at Room " + room;
+		return "Section ID: " + sectionId + " at " + room;
 	}
 
 	@Override
