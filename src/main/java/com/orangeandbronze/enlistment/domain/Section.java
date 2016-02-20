@@ -68,6 +68,10 @@ public class Section {
 		return subject;
 	}
 	
+	public String getSectionId(){
+		return sectionId;
+	}
+	
 	
 	@Override
 	public String toString() {

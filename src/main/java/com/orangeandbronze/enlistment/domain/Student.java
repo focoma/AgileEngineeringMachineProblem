@@ -32,6 +32,10 @@ public class Student {
 		return sections;
 	}
 	
+	public int getStudentNumber(){
+		return studentNumber;
+	}
+	
 	@Override 
 	public String toString() {
 		return "Student# " + studentNumber;
