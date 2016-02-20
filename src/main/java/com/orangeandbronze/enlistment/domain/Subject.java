@@ -12,10 +12,14 @@ enum Subject {
 	Subject(){
 	
 	}
+	
 	public boolean isPreRequisites(Subject otherSubject){
-			if(preReq.equals(otherSubject)){ 		
-				return true;
-			}
+		  if(preReq != null  && otherSubject != null){
+			 if(preReq.equals(otherSubject)){ 		
+					return true;
+			 }
+		  } 
+		   
 		return false;
 	}
 	
