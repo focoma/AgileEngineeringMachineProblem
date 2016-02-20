@@ -10,20 +10,26 @@ public class SemesterTest {
 	public void testNegativeSemesterId() {
 		Student student = new Student(1);
 		Section section = new Section("A", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
-		new Semester(-1, section, student);
+		StudentSemEnlistment studentSemEnlistment = new StudentSemEnlistment(student, section);
+		Semester semester = new Semester(-1, studentSemEnlistment);
+		semester.addToSemesters(studentSemEnlistment);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testZeroSemesterId() {
 		Student student = new Student(1);
 		Section section = new Section("A", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
-		new Semester(0, section, student);
+		StudentSemEnlistment studentSemEnlistment = new StudentSemEnlistment(student, section);
+		Semester semester = new Semester(0, studentSemEnlistment);
+		semester.addToSemesters(studentSemEnlistment);
 	}
 	
 	@Test
 	public void createValidSemester(){
 		Student student = new Student(1);
 		Section section = new Section("A", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
-		new Semester(1, section, student);
+		StudentSemEnlistment studentSemEnlistment = new StudentSemEnlistment(student, section);
+		Semester semester = new Semester(1, studentSemEnlistment);
+		semester.addToSemesters(studentSemEnlistment);
 	}
 }

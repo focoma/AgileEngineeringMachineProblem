@@ -6,16 +6,14 @@ import java.util.HashSet;
 public class Semester {
 	
 	private final Integer semesterId;
-	private final Section section;
-	private final Student student;
 	private final Collection<StudentSemEnlistment> semesters = new HashSet<>();
+	private final StudentSemEnlistment studentSemEnlistment;
 
-	public Semester(Integer semesterId, Section section, Student student) {
+	public Semester(Integer semesterId, StudentSemEnlistment studentSemEnlistment) {
 		if(semesterId <= 0){
 			throw new IllegalArgumentException("Semester id should not be negative neither is zero but is " + semesterId);
 		}
-		this.section = section;
-		this.student = student;
+		this.studentSemEnlistment = studentSemEnlistment;
 		this.semesterId = semesterId;
 	}
 	
@@ -25,6 +23,17 @@ public class Semester {
 	
 	Collection<StudentSemEnlistment> getSemesters(){
 		return semesters;
+	}
+	
+	Collection<StudentSemEnlistment> getStudentSemesters(Student student){
+		Collection<StudentSemEnlistment> studentSems = new HashSet<>();
+		for(StudentSemEnlistment studentEnlistment : semesters){
+			if(studentEnlistment.getStudent().equals(student)){
+				studentSems.add(studentEnlistment);
+			}
+		}
+		
+		return studentSems;
 	}
 	
 }
