@@ -20,15 +20,15 @@ public class StudentTest {
 	
 	@Test
 	public void enlistFirstSection() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math", null));
+		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"));
 		STUDENT.enlist(sectionRose);
 		assertTrue(STUDENT.getSections().contains(sectionRose));
 	}
 	
 	@Test
 	public void enlistTwoSectionInOneStudent() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math", null));
-		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H1600), new Room("CEAT101", 10), new Subject("English", null));
+		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"));
+		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H1600), new Room("CEAT101", 10), new Subject("English"));
 		STUDENT.enlist(sectionRose);
 		STUDENT.enlist(sectionSampaguita);
 		assertEquals(2, STUDENT.getSections().size());
@@ -36,22 +36,22 @@ public class StudentTest {
 
 	@Test (expected = ScheduleConflictException.class)
 	public void enlistTwoSectionSameScheduleInOneStudent() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math", null));
-		Section sectionSampaguita = new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("English", null));
+		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"));
+		Section sectionSampaguita = new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("English"));
 		STUDENT.enlist(sectionRose);
 		STUDENT.enlist(sectionSampaguita);
 	}
 		
 	@Test
 	public void enlistSectionWithoutExceedingRoomCapacity() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), new Subject("Math", null));
+		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), new Subject("Math", "English"));
 		Student student = new Student(1);
 		student.enlist(sectionRose);
 	}	
 
 	@Test (expected = RoomCapacityExceedsException.class)
 	public void enlistSectionExceedsRoomCapacity() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), new Subject("Math", null));
+		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), new Subject("Math"));
 		Student firstStudent = new Student(1);
 		Student secondStudent = new Student(2);
 		firstStudent.enlist(sectionRose);
@@ -60,7 +60,7 @@ public class StudentTest {
 	
 	@Test (expected = RoomCapacityExceedsException.class)
 	public void enlistSectionExceedsRoomCapacity1() {
-		Subject subj1 = new Subject("MATH101", null);
+		Subject subj1 = new Subject("MATH101");
 		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 1), subj1);
 		Student firstStudent = new Student(1);
 		Student secondStudent = new Student(2);

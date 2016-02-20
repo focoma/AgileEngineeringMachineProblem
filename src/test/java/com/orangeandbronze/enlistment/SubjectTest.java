@@ -24,4 +24,29 @@ public class SubjectTest {
 		new Subject("Enlish101", "Math102");
 	}
 	
+	
+	@Test(expected = SubjectNameException.class)
+	public void checkForSubjectAndPrerequisiteIsEmpty(){
+		new Subject("", "");
+	}
+	
+	@Test(expected = SubjectNameException.class)
+	public void checkForSubjectEmptyValue(){
+		new Subject("", "Math101");
+	}
+	
+	@Test(expected = SubjectNameException.class)
+	public void checkForPreRequisiteEmptyValue(){
+		new Subject("Philo101", "");
+	}
+	
+	@Test(expected = SubjectNameException.class)
+	public void checkForSubjectEmpty(){
+		new Subject("");
+	}
+	
+	@Test(expected = SubjectNameException.class)
+	public void checkForSubjectNull(){
+		new Subject(null);
+	}
 }

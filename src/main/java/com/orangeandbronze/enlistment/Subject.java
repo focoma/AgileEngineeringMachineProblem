@@ -3,31 +3,40 @@ package com.orangeandbronze.enlistment;
 public class Subject {
 	private final String subjectName;
 	private final String preRequisites;
-	
-	public Subject(String subjectName){
+
+	public Subject(String subjectName) {
+		checkValidationWith(subjectName == null || subjectName.equals(""), "Error values for Subject: " + subjectName);
 		this.subjectName = subjectName;
 		this.preRequisites = "";
 	}
-	
-	public Subject(String subjectName, String preRequisites){
-		if(hasSubjectAndPreRequisitesValidation(subjectName, preRequisites)) {
-			throw new SubjectNameException(subjectName, preRequisites);
-		}
+
+	public Subject(String subjectName, String preRequisites) {
+		checkValidationWith(hasSubjectAndPreRequisitesValidation(subjectName, preRequisites),
+				"Error values for Subject: " + subjectName + ", Pre-requisite: " + preRequisites);
 		this.subjectName = subjectName;
 		this.preRequisites = preRequisites;
 	}
-	
-    boolean hasSubjectAndPreRequisitesValidation(String subject, String preRequisites){
-		return (subject == null || preRequisites == null || subject.equals(preRequisites));
+
+	private boolean hasSubjectAndPreRequisitesValidation(String subject, String preRequisites) {
+		return (subject == null || preRequisites == null || subject.equals("") || preRequisites.equals("")
+				|| subject.equals(preRequisites));
 	}
-	
-	void checkPreRequisites(Subject subj){
-		if(preRequisites.equals(subj.getSubjectName())) {
-			throw new PreRequisiteSubjectRequiredException("The subject " + subj + " has a prerequisite of subject " + preRequisites);
+
+	private void checkValidationWith(boolean isValid, String errMsg) {
+		if (isValid) {
+			throw new SubjectNameException(errMsg);
+		}
+		return;
+	}
+
+	void checkPreRequisites(Subject subj) {
+		if (preRequisites.equals(subj.getSubjectName())) {
+			throw new PreRequisiteSubjectRequiredException(
+					"The subject " + subj + " has a prerequisite of subject " + preRequisites);
 		}
 	}
-	
-	public String getSubjectName(){
+
+	public String getSubjectName() {
 		return subjectName;
 	}
 
@@ -66,6 +75,5 @@ public class Subject {
 	public String toString() {
 		return "subjectName=" + subjectName + ", preRequisites=" + preRequisites + "";
 	}
-	
-	
+
 }
