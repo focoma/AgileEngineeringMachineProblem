@@ -24,7 +24,7 @@ public class Student {
 				studentSemEnlistment.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
 			}
 		}
-		newSection.incrementStudentEnlistCounter();
+		newSection.addStudent(this);
 		sections.add(newSection);
 	}
 	

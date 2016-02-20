@@ -1,12 +1,15 @@
 package com.orangeandbronze.enlistment.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Section {
 	private final String sectionId;
 	private final Schedule schedule;
 	private final Room room;
-	private int studentEnlistCounter;
 	private final Subject subject;
 	private final Integer semesterId;
+	private final Set<Student> students = new HashSet<>();
 	
 	public Section(String sectionId, Schedule schedule, Integer semesterId, Room room, Subject subject) {
 		if(!sectionId.matches("^[A-Za-z0-9]+$")) {
@@ -25,11 +28,11 @@ public class Section {
 		}
 	}
 	
-	public void incrementStudentEnlistCounter() {
+	public void addStudent(Student student) {
 		if(!hasSlotAvailable()) {
 			throw new ExceedsRoomCapacityException("No more slot available to this section " + sectionId);
 		}
-		studentEnlistCounter++;
+		students.add(student);
 	}
 	
 	public void checkSubjectConflictWith(int studentNumber, Section currentSection, Section newSection) {
@@ -39,15 +42,11 @@ public class Section {
 	}
 	
 	boolean hasSlotAvailable() {
-		return studentEnlistCounter < room.getRoomMaxCapacity();
+		return students.size() < room.getRoomMaxCapacity();
 	}
 	
 	Schedule getSchedule() {
 		return schedule;
-	}
-	
-	int getStudentEnlistCounter() {
-		return studentEnlistCounter;
 	}
 	
 	Room getRoom() {
