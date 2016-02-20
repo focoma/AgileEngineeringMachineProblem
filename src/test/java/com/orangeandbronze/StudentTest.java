@@ -19,6 +19,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  * Created by training on 2/19/16.
  */
@@ -83,10 +87,9 @@ public class StudentTest {
         student.enlist(section);
         student.enlist(section2);
     }
-    
-    // Test for prerequisite
-    @Ignore
-    public void test() {
+
+    @Test
+    public void prerequisiteTestNormalWithoutIncludingSemester() {
     	Section section = SECTION1;
     	Section section2 = SECTION1_1;
         
@@ -94,7 +97,32 @@ public class StudentTest {
         student.enlist(section);
         student.enlist(section2);
     }
-    
-    
+
+    @Test(expected = SubjectPrerequisiteException.class)
+    public void prerequisiteWithOutIncludingSemeterTest() {
+        Section section = SECTION1;
+        Section section2 = SECTION1_1;
+        Student student = new Student(1);
+        student.enlist(section2);
+        student.enlist(section);
+    }
+
+    @Test
+    public void prerequisiteTestNormalWithSemester() {
+        Section section = SECTION1;
+        Section section2 = SECTION1_1;
+
+        Student student = new Student(1);
+        student.enlist(section);
+        student.enlist(section2);
+
+        Collection<Section> expected = new ArrayList<Section>();
+        expected.add(section);
+        expected.add(section2);
+
+        assertEquals(2, student.getSections().size());
+    }
+
+
 
 }

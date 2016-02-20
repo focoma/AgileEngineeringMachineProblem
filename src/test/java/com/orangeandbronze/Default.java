@@ -35,12 +35,14 @@ public class Default {
     public final static Room  ROOM3_1 = new Room(ROOM103, 1);
     
     
-    public final static Subject SUBJECT_MATH_01 = new Subject(1, new SubjectPrerequisite(null));
-    public final static Subject SUBJECT_MATH_02 = new Subject(2, new SubjectPrerequisite(1));
+    public final static Subject SUBJECT_MATH_01 = new Subject(1, null); // no prerequisite
+    public final static Subject SUBJECT_MATH_02 = new Subject(2, 1);    // prerequisite = SUBJECT_MAT_01
+
+    public final static Subject SUBJECT_SCIENCE_01 = new Subject(3, null); // no prerequisite
     
     
     public final static Section SECTION1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5, SUBJECT_MATH_01, S_FIRST_SEM);
-    public final static Section SECTION1_1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5, SUBJECT_MATH_02, S_SECOND_SEM);
+    public final static Section SECTION1_1 = new Section(SECTION3_NAME, SCHEDULE_H1000, ROOM1_5, SUBJECT_MATH_02, S_SECOND_SEM);
     public final static Section SECTION2 = new Section(SECTION2_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_02, S_SECOND_SEM);
     public final static Section SECTION3 = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM3_1, SUBJECT_MATH_01, S_FIRST_SEM);
     

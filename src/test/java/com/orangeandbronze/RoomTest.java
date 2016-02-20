@@ -35,7 +35,7 @@ public class RoomTest {
         Student student4 = new Student(004);
 
         Section section1 = new Section("Section1", SCHEDULE_H0830 , new Room(ROOM101, 4), SUBJECT_MATH_01, S_FIRST_SEM);
-        Section section2 = new Section("Section2", SCHEDULE_H1000, new Room(ROOM102, 3), SUBJECT_MATH_02, S_FIRST_SEM);
+        Section section2 = new Section("Section2", SCHEDULE_H1000, new Room(ROOM102, 3), SUBJECT_SCIENCE_01, S_FIRST_SEM);
 
         student1.enlist(section1);
         student2.enlist(section1);
@@ -56,7 +56,7 @@ public class RoomTest {
         Student student4 = new Student(004);
 
         Section section1 = new Section("Section1", SCHEDULE_H0830 , new Room(ROOM101, 3), SUBJECT_MATH_01, S_FIRST_SEM);
-        Section section2 = new Section("Section2", new Schedule(Days.TF, Period.H0830), new Room(ROOM101, 4), SUBJECT_MATH_02, S_FIRST_SEM);
+        Section section2 = new Section("Section2", new Schedule(Days.TF, Period.H0830), new Room(ROOM101, 4), SUBJECT_SCIENCE_01, S_FIRST_SEM);
 
         student1.enlist(section1);
         student2.enlist(section1);

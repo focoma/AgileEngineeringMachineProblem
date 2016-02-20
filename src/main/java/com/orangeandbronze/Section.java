@@ -26,6 +26,10 @@ public class Section {
     public int getRoomMaxCapacity() {
     	return room.getMaxCapacity();
     }
+
+    public SemesterEnum getSemester() {
+        return semester;
+    }
     
     public boolean canAddNewSection() {
     	return studentCounter < getRoomMaxCapacity();
@@ -33,6 +37,12 @@ public class Section {
     
     public Subject getSubject() {
     	return subject;
+    }
+
+
+
+    public String getSectionid() {
+        return sectionId;
     }
 
     public Section(String sectionId, 
