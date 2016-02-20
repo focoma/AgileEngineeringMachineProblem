@@ -27,5 +27,21 @@ public class RoomTest {
 	public void roomNameHasAmpersand() {
 		new Room("DRD101&GDO101", 40);
 	}	
+	
+	
+	@Test(expected = RoomNameException.class)
+	public void roomCapacityNegativeValue(){
+		new Room("DXRT02", -1);
+	}
+	
+	@Test(expected = RoomNameException.class)
+	public void roomNameNullValue(){
+		new Room(null, 2);
+	}
+	
+	@Test(expected = RoomNameException.class)
+	public void roomNameEmptyValue(){
+		new Room("", 3);
+	}
 
 }

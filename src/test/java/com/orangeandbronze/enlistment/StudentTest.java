@@ -69,5 +69,10 @@ public class StudentTest {
 		firstStudent.enlist(sectionRose);
 		secondStudent.enlist(sectionRose);
 	}
+	
+	@Test (expected = StudentNumberException.class)
+	public void studentNumberNullValue(){
+		new Student(null);
+	}
 
 }

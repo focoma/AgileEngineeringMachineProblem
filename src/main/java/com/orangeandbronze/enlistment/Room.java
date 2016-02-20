@@ -1,26 +1,27 @@
 package com.orangeandbronze.enlistment;
 
-import java.util.Collection;
-import java.util.HashSet;
-
 public class Room {
 	private final String roomName;
 	private final int roomCapacity;
-	
+
 	public Room(String roomName, int roomCapacity) {
-		if(!roomName.matches("^[a-zA-Z0-9]*$")) {
+		if (checkValidationWith(roomName, roomCapacity)) {
 			throw new RoomNameException(roomName);
-		}		
+		}
 		this.roomName = roomName;
 		this.roomCapacity = roomCapacity;
 	}
-	
+
+	private boolean checkValidationWith(String room, int capacity) {
+		return (room == null || room.equals("") || !room.matches("^[a-zA-Z0-9]*$") || capacity < 0);
+	}
+
 	void checkRoomCapacity(int studentSize) {
-		if(studentSize >= roomCapacity) {
+		if (studentSize >= roomCapacity) {
 			throw new RoomCapacityExceedsException(this.toString());
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -51,7 +52,5 @@ public class Room {
 			return false;
 		return true;
 	}
-	
-	
 
 }
