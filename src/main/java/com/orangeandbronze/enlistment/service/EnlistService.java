@@ -14,9 +14,6 @@ public class EnlistService {
 	private SectionDAO sectionDao;
 	private StudentDAO studentDao;
 	
-	//private Student studentDao;
-	//private Section sectionDao;
-	
 	public void enlist(int studentNo, String sectionId) {
 		final Student student = new Student(studentNo);
 	    final Section section = new Section(sectionId, SCHEDULE, new Room("GDO101",2), new Subject("Math"), 1);
@@ -33,16 +30,4 @@ public class EnlistService {
 	public void setStudentDao(StudentDAO studentDao) {
 		this.studentDao = studentDao;
 	}
-
-	public void setStudent(Student studentDao2) {
-		// TODO Auto-generated method stub
-		//studentDao = studentDao2;
-	}
-
-	public void setSection(Section sectionDao2) {
-		// TODO Auto-generated method stub
-		//sectionDao = sectionDao2;
-	}
-	
-	
 }
