@@ -5,7 +5,12 @@ import static com.orangeandbronze.enlistment.domain.Defaults.*;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.orangeandbronze.enlistment.domain.Room;
+
 public class SectionTest {
+	
+	final Room ROOM = new Room("S306", 2);
 	
 	@Test
 	public void sectionIdAlphaNumeric() {
@@ -53,7 +58,23 @@ public class SectionTest {
 		}
 	}
 	
+	@Test
+	public void sectionsWithDiffSchedButSameRoom(){
+		new Section("A", SCHEDULE, ROOM);
+		new Section("B", SCHEDULE2, ROOM);
+		new Section("C", SCHEDULE3, ROOM);
+	}
 	
-
+	@Test
+	public void sectionsWithSameSchedDifferentRooms(){
+		new Section("A", SCHEDULE, ROOM);
+		new Section("B", SCHEDULE, new Room("A412", 25));
+	}
+	
+	@Test
+	public void sectionsWithSameIdDifferentSchedAndRooms(){
+		new Section("A", SCHEDULE, ROOM);
+		new Section("A", SCHEDULE, new Room("A412", 25));
+	}
 }
 
