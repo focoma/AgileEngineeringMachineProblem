@@ -40,7 +40,7 @@ public class StudentTest {
 		Section sectionSampaguita = new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("English"), 1);
 		STUDENT.enlist(sectionRose);
 		STUDENT.enlist(sectionSampaguita);
-	}
+	}	
 		
 	@Test
 	public void enlistSectionWithoutExceedingRoomCapacity() {
@@ -74,5 +74,14 @@ public class StudentTest {
 	public void studentNumberNullValue(){
 		new Student(null);
 	}
-
+	
+	@Test (expected = PeriodException.class)
+	public void enlistTwoSectionInOneStudentWithConflictPeriod() {
+		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"), 1);
+		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H0900), new Room("CEAT101", 10), new Subject("English"), 1);
+		STUDENT.enlist(sectionRose);
+		STUDENT.enlist(sectionSampaguita);
+		assertEquals(2, STUDENT.getSections().size());
+	}	
+	
 }
