@@ -21,7 +21,7 @@ public class Student {
 			currentSection.checkSubjectConflictWith(studentNumber, currentSection, newSection);		
 
 		}
-		newSection.incrementStudentEnlistCounter();
+		newSection.addStudent(this);
 		sections.add(newSection);
 	}
 	

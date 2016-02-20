@@ -37,18 +37,19 @@ public class SectionTest {
 	public void incrementStudentEnlistCounterWithoutExceedingRoomCapacity() {
 		Student student = new Student(1);
 		Section section = new Section("S1", SCHEDULE, 1, ROOM2, SUBJECT_NO_PREREQ);
-		section.incrementStudentEnlistCounter();
-		assertEquals(1, section.getStudentEnlistCounter());
+		section.addStudent(student);
+		student.enlist(section);
 	}
 	
 	@Test(expected = ExceedsRoomCapacityException.class)
 	public void incrementStudentEnlistCounterExceedsRoomCapacity() {
 		Student student1 = new Student(1);
 		Student student2 = new Student(2);
+		Student student3 = new Student(3);
 		Section section = new Section("S1", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
-		for(int i = 1; i <= 3; i++) {
-			section.incrementStudentEnlistCounter();
-		}
+		student1.enlist(section);
+		student2.enlist(section);
+		student3.enlist(section);
 	}
 	
 	@Test
