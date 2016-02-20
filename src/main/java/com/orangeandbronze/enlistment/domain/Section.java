@@ -25,12 +25,6 @@ public class Section {
 		}
 	}
 	
-	void checkIfPreRequisiteSubjectHasBeenTaken(Section section){
-		if(!subject.isPreRequisites(section.getSubject())){
-			throw new SubjectPreRequisitiesException(subject,section.getSubject());
-		}
-	}
-	
 	public void incrementStudentEnlistCounter() {
 		if(!hasSlotAvailable()) {
 			throw new ExceedsRoomCapacityException("No more slot available to this section " + sectionId);

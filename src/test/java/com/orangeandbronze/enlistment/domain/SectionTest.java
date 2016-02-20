@@ -70,18 +70,5 @@ public class SectionTest {
 		new Section("A", SCHEDULE, 1, ROOM2, SUBJECT_NO_PREREQ);
 	}
 	
-	@Test
-	public void subjectCheckIfPreRequisitesHasBeenTaken(){
-		Section section2 = new Section("B", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
-		Section section1 = new Section("B", SCHEDULE, 1, ROOM1, SUBJECT_WITH_PREREQ);
-	    section1.checkIfPreRequisiteSubjectHasBeenTaken(section2);
-	}
-	
-	@Test(expected = SubjectPreRequisitiesException.class)
-	public void subjectCheckIfPreRequisitesHasBeenTaken1(){
-		Section subject1 = new Section("B", SCHEDULE, 1, ROOM1, SUBJECT_WITH_PREREQ);
-		Section subject2 = new Section("B", SCHEDULE, 1, ROOM1, SUBJECT_WITH_PREREQ);
-		subject1.checkIfPreRequisiteSubjectHasBeenTaken(subject2);	
-	}	
 }
 

@@ -51,12 +51,13 @@ public class StudentSemEnlistmentTest {
 	@Test
 	public void checkIfStudenthasTakenTheSubjectError(){
 		Student student = new Student(1);
-		Section section = new Section("A", new Schedule(Days.MTH, Period.H1130), 1, new Room("P123", 2), Subject.Math2);
+		Section section = new Section("A", new Schedule(Days.MTH, Period.H1130), 1, new Room("P123", 2), Subject.Math1);
 		Section section1 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math2);
-		Section section2 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math2);
+		Section section2 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math3);
 		StudentSemEnlistment semEnlist = new StudentSemEnlistment(student);
-		semEnlist.enlistInSection(section2);
+		semEnlist.enlistInSection(section);
 		semEnlist.enlistInSection(section1);
+		//semEnlist.enlistInSection(section3);
 	}
 
 }
