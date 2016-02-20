@@ -81,7 +81,6 @@ public class StudentTest {
     public void prerequisiteTestNormalWithoutIncludingSemester() {
     	Section section = SECTION1;
     	Section section2 = SECTION1_1;
-        
         Student student = new Student(1);
         student.enlist(section);
         student.enlist(section2);
@@ -125,9 +124,5 @@ public class StudentTest {
         expected.add(section2);
         assertEquals(2, student.getSections().size());
     }
-
-
-
-
 
 }
