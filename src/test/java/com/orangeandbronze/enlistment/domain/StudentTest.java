@@ -1,6 +1,11 @@
 package com.orangeandbronze.enlistment.domain;
 
-import static com.orangeandbronze.enlistment.domain.Defaults.*;
+import static com.orangeandbronze.enlistment.domain.Defaults.ROOM1;
+import static com.orangeandbronze.enlistment.domain.Defaults.ROOM2;
+import static com.orangeandbronze.enlistment.domain.Defaults.SCHEDULE;
+import static com.orangeandbronze.enlistment.domain.Defaults.SCHEDULE2;
+import static com.orangeandbronze.enlistment.domain.Defaults.SUBJECT_NO_PREREQ;
+import static com.orangeandbronze.enlistment.domain.Defaults.SUBJECT_WITH_PREREQ;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -67,6 +72,17 @@ public class StudentTest {
 		Room room = new Room("R102", 2);
 		Section section1 = new Section("A", SCHEDULE, 1, ROOM1, SUBJECT_NO_PREREQ);
 		Section section2 = new Section("B", SCHEDULE2, 1, ROOM1, SUBJECT_NO_PREREQ);
+		student.enlist(section1);
+		student.enlist(section2);
+	}
+	
+	@Test
+	public void enlistToSectionWithNoScheduleConflictAndNoSubjectConflict() {
+		Student student = new Student(1);
+		Room room1 = new Room("R102", 2);
+		Room room2 = new Room("R103", 2);
+		Section section1 = new Section("A", SCHEDULE, 1, room1, SUBJECT_WITH_PREREQ);
+		Section section2 = new Section("B", new Schedule(Days.TF, Period.H0830), 1, room2, SUBJECT_NO_PREREQ);
 		student.enlist(section1);
 		student.enlist(section2);
 	}
