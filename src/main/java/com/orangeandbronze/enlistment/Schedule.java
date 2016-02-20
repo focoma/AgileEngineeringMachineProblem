@@ -20,7 +20,6 @@ public class Schedule {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return days + " " + period; //MTH H0830
 	}
 

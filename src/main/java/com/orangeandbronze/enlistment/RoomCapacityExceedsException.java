@@ -4,7 +4,6 @@ public class RoomCapacityExceedsException extends RuntimeException {
 	
 	public RoomCapacityExceedsException(String roomToString) {
 		super(roomToString + ". Number of student already exceeds.");
-		// TODO Auto-generated constructor stub
 	}
 
 }
