@@ -20,6 +20,11 @@ public class SubjectTest {
 	
 	@Test
 	public void preRequesitesSubjectTest1() {
-	//	assertEquals(false, Math1.checkIfSubjectHasPreRequisites(null));
+	  assertEquals(false, Math1.isPreRequisites(Math2));
+	}
+	
+	@Test
+	public void preRequesitesSubjectTest2() {
+	  assertEquals(false, Math1.isPreRequisites(null));
 	}
 }

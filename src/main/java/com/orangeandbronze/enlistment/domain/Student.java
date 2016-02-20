@@ -17,6 +17,7 @@ public class Student {
 	public void enlist(Section newSection) {
 		for(Section currentSection : sections) {
 			currentSection.checkForConflictWith(currentSection, newSection);
+		    currentSection.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
 		}
 		newSection.incrementStudentEnlistCounter();
 		sections.add(newSection);
