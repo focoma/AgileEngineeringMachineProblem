@@ -31,7 +31,6 @@ public class StudentSemEnlistmentsTest {
 		student.enlist(sectionRose);
 		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H1600), new Room("CEAT101", 10), new Subject("Math"), 1);
 		student.enlist(sectionSampaguita);
-		
 	}
 
 	@Test
