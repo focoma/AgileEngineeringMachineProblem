@@ -20,7 +20,7 @@ public class StudentTest {
     @Test
     public void enlistSectionTest() {
         Student student = new Student(1);
-        Section section = new Section(SECTION1_NAME, new Schedule(Days.MTH, Period.H0830), new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
+        Section section = new Section(SECTION1_NAME, SCHEDULE_H0830, new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
         student.enlist(section);
         assertEquals(1, student.getSections().size());
     }
@@ -39,7 +39,7 @@ public class StudentTest {
         Student student = new Student(1);
         Student student2 = new Student(2);
         
-        Section section = new Section(SECTION1_NAME, new Schedule(Days.MTH, Period.H0830), new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
+        Section section = new Section(SECTION1_NAME, SCHEDULE_H0830, new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
         student.enlist(section);
         student2.enlist(section);
     }
@@ -50,7 +50,7 @@ public class StudentTest {
         Student student2 = new Student(2);
         Student student3 = new Student(3);
         
-        Section section = new Section(SECTION1_NAME, new Schedule(Days.MTH, Period.H0830), new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
+        Section section = new Section(SECTION1_NAME, SCHEDULE_H0830, new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
         student.enlist(section);
         student2.enlist(section);
         student3.enlist(section);

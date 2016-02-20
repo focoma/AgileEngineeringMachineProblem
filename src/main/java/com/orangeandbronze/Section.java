@@ -44,10 +44,10 @@ public class Section {
         return sectionId;
     }
 
-    public Section(String sectionId, 
-    		Schedule schedule, 
-    		Room room, 
-    		Subject subject, SemesterEnum semester) {
+    public Section(String sectionId,
+                   Schedule schedule,
+                   Room room,
+                   Subject subject, SemesterEnum semester) {
 
         if (!sectionId.matches("^[a-zA-Z0-9]*$")) {
             throw new IllegalArgumentException("Section ID must be alphanumeric, was: " + sectionId);
@@ -60,9 +60,25 @@ public class Section {
     }
 
     void checkForConflictWith(Section other) {
-        if (this.schedule.equals(other.schedule)) {
+        if (isCurrentEndPeriodHasConflictWith(other) || isCurrentStartPeriodHasConflictWith(other)) {
             throw new ScheduleConflictException(this, other);
         }
+    }
+
+    boolean isCurrentStartPeriodHasConflictWith(Section other) {
+        if (this.schedule.getTimeValueStartPeriod(this.schedule) >= other.schedule.getTimeValueStartPeriod(other.schedule) &&
+                this.schedule.getTimeValueEndPeriod(this.schedule) <= other.schedule.getTimeValueEndPeriod(other.schedule)) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean isCurrentEndPeriodHasConflictWith(Section other) {
+        if (this.schedule.getTimeValueEndPeriod(this.schedule) >= other.schedule.getTimeValueStartPeriod(other.schedule) &&
+                this.schedule.getTimeValueEndPeriod(this.schedule) <= other.schedule.getTimeValueEndPeriod(other.schedule)) {
+            return true;
+        }
+        return false;
     }
 
     void checkForExistingSubject(Section newSection) {
