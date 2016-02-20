@@ -40,7 +40,7 @@ public class StudentSemEnlistments {
 				for(Section sect: sectionsByStudent){
 					if(subjectInEnlistedSection != null || subjectInEnlistedSection.equals("")){
 						for(int i = 0; i < section.getSemesters().size(); i++){
-							if(sect.getSubject().equals(section.getSubject().getPreRequisiteSubjectName()) || 
+							if(sect.getSubject().getSubjectName().equals(section.getSubject().getPreRequisiteSubjectName()) &&
 									sect.getSemester() >= section.getSemester()){
 								throw new StudentSemEnlistmentsException("Subject Pre-Requisites from previous semester"
 										+ section.getSubject().getSubjectName());
