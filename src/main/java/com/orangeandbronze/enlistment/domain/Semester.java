@@ -8,7 +8,7 @@ public class Semester {
 	private final Integer semesterId;
 	private final Section section;
 	private final Student student;
-	private final Collection<StudentSemEnlistments> semesters = new HashSet<>();
+	private final Collection<StudentSemEnlistment> semesters = new HashSet<>();
 
 	public Semester(Integer semesterId, Section section, Student student) {
 		if(semesterId <= 0){
@@ -19,11 +19,11 @@ public class Semester {
 		this.semesterId = semesterId;
 	}
 	
-	void addToSemesters(StudentSemEnlistments studentSemEnlistment){
+	void addToSemesters(StudentSemEnlistment studentSemEnlistment){
 		semesters.add(studentSemEnlistment);
 	}
 	
-	Collection<StudentSemEnlistments> getSemesters(){
+	Collection<StudentSemEnlistment> getSemesters(){
 		return semesters;
 	}
 	
