@@ -14,12 +14,10 @@ public class Student {
 		this.studentNumber = studentNumber;
 	}
 	
+	
 	public void enlist(Section newSection) {
 		for(Section currentSection : sections) {
 			currentSection.checkForConflictWith(currentSection, newSection);
-
-//		    currentSection.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
-
 			currentSection.checkSubjectConflictWith(studentNumber, currentSection, newSection);		
 
 		}
