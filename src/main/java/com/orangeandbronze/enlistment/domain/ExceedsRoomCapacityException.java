@@ -5,4 +5,5 @@ public class ExceedsRoomCapacityException extends RuntimeException {
 	public ExceedsRoomCapacityException(String message) {
 		super(message);
 	}
+	
 }
