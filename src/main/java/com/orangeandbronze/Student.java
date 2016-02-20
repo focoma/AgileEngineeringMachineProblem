@@ -26,29 +26,33 @@ public class Student {
              * Consider the following
              * * Previous Semester.
              */
+
             if(newSection.getSubject().getSubjectIdPrerequisite() != null  &&
+                    newSection.getSemester().getSemesterNum() > currentSection.getSemester().getSemesterNum() &&
                     (newSection.getSubject().getSubjectIdPrerequisite() !=  currentSection.getSubject().getSubjectId())) {
                 // check semester
-                if(newSection.getSemester().getSemesterNum() > currentSection.getSemester().getSemesterNum()){
-
-                }
                 throw new SubjectPrerequisiteException("Subject: " + newSection.getSubject().getSubjectIdPrerequisite()  +  " has a prerequisite to subject: " + currentSection.getSubject().getSubjectId());
             }
         }
-        
+
+
+        if(!newSection.canAddNewSection()){
+            throw new RoomCapacityException(newSection.getRoomMaxCapacity() + " had reach it's maximum capacity");
+        }
+
         // Cannot Enlist when Room capacity exceeded.
-        if(newSection.canAddNewSection()) {
+
             /* Checks if the collection of of sections has no item then,
             check the item to be added if has a prerequisite if so then throw SubjectPrerequisiteException.
             */
-            if(sections.size() < 1 && newSection.getSubject().getSubjectIdPrerequisite() != null){
-                throw new SubjectPrerequisiteException("Cannot  add coz it has a prerequisite " + newSection.getSubject().getSubjectIdPrerequisite());
-            }
+        if(sections.size() < 1 && newSection.getSubject().getSubjectIdPrerequisite() != null){
+               throw new SubjectPrerequisiteException("Cannot enlist new subject, should enlist prerequisite first" + newSection.getSubject().getSubjectIdPrerequisite());
+        }
+
+
         	sections.add(newSection);
             newSection.setStudentCounter();
-        } else {
-       	 	throw new RoomCapacityException(newSection.getRoomMaxCapacity() + " had reach it's maximum capacity");       
-        }
+
         
         // Cannot Enlist in section, if any of his currently-enlisted sections
         // has the same subject as that section

@@ -1,19 +1,8 @@
 package com.orangeandbronze;
 
 
-import static com.orangeandbronze.Default.ROOM103;
-import static com.orangeandbronze.Default.ROOM1_5;
-import static com.orangeandbronze.Default.ROOM2_2;
-import static com.orangeandbronze.Default.SCHEDULE_H0830;
-import static com.orangeandbronze.Default.SCHEDULE_H1000;
-import static com.orangeandbronze.Default.SECTION1_NAME;
-import static com.orangeandbronze.Default.SECTION2_NAME;
-import static com.orangeandbronze.Default.SECTION3_NAME;
-import static com.orangeandbronze.Default.SUBJECT_MATH_01;
-import static com.orangeandbronze.Default.SUBJECT_MATH_02;
+import static com.orangeandbronze.Default.*;
 import static com.orangeandbronze.SemesterEnum.S_FIRST_SEM;
-import static com.orangeandbronze.Default.SECTION1;
-import static com.orangeandbronze.Default.SECTION1_1;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Ignore;
@@ -119,9 +108,25 @@ public class StudentTest {
         Collection<Section> expected = new ArrayList<Section>();
         expected.add(section);
         expected.add(section2);
-
         assertEquals(2, student.getSections().size());
     }
+
+    @Test
+    public void prerequisiteAddingNotAddedSubjectNormalWithSemester() {
+        Section section = SECTION1;
+        Section section2 = SECTION1_2;
+
+        Student student = new Student(1);
+        student.enlist(section);
+        student.enlist(section2);
+
+        Collection<Section> expected = new ArrayList<Section>();
+        expected.add(section);
+        expected.add(section2);
+        assertEquals(2, student.getSections().size());
+    }
+
+
 
 
 
