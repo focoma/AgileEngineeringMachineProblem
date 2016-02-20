@@ -6,8 +6,9 @@ public class Section {
 	private final Room room;
 	private int studentEnlistCounter;
 	private final Subject subject;
+	private final Integer semesterId;
 	
-	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
+	public Section(String sectionId, Schedule schedule, Integer semesterId, Room room, Subject subject) {
 		if(!sectionId.matches("^[A-Za-z0-9]+$")) {
 			throw new IllegalArgumentException("Section Id must be alpha-numeric");
 		}
@@ -15,7 +16,7 @@ public class Section {
 		this.sectionId = sectionId;
 		this.room = room;
 		this.subject = subject;
-		
+		this.semesterId = semesterId;
 	}
 	
 	void checkForConflictWith(Section currentSection, Section other) {
@@ -45,6 +46,10 @@ public class Section {
 	
 	Room getRoom() {
 		return room;
+	}
+	
+	public int getSemester(){
+		return semesterId;
 	}
 	
 	
