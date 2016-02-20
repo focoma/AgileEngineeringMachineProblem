@@ -13,7 +13,7 @@ public class StudentSemEnlistments {
 	}
 	
 	Collection getStudentSectionsBySem(Student student, int semester) {
-		  return new ArrayList(studentKeyMap.get(student));
+		  return new ArrayList<>(studentKeyMap.get(student));
 	}
 	
 	void checkStudentSameSubjectInSection(Student student, Section section){

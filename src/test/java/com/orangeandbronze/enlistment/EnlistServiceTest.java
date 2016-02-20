@@ -17,14 +17,16 @@ public class EnlistServiceTest {
 
 		final int studentNo = 1;
 		final String sectionId = "ROSE";
+		final Student student = new Student(studentNo);
+		final Section section = new Section(sectionId, new Schedule(Days.MTH, Period.H0830),
+				new Room("GDO101", 2), new Subject("Math"), 1);
 
 		EnlistService service = new EnlistService();
 		service.setStudentDao(studentDao);
 		service.setSectionDao(sectionDao);
 
-		when(studentDao.getStudentNo(studentNo)).thenReturn(new Student(studentNo));
-		when(sectionDao.getSectionId(sectionId)).thenReturn(new Section(sectionId, new Schedule(Days.MTH, Period.H0830),
-				new Room("GDO101", 2), new Subject("Math"), 1));
-
+		when(studentDao.getStudentNo(studentNo)).thenReturn(student);
+		when(sectionDao.getSectionId(sectionId)).thenReturn(section);
+		student.enlist(section);
 	}
 }
