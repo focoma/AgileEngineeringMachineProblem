@@ -37,6 +37,7 @@ public class Default {
     
     public final static Subject SUBJECT_MATH_01 = new Subject(1, new SubjectPrerequisite(null));
     public final static Subject SUBJECT_MATH_02 = new Subject(2, new SubjectPrerequisite(1));
+    public final static Subject SUBJECT_ENGLISH_01 = new Subject(3, new SubjectPrerequisite(null));
     
     
     public final static Section SECTION1 = new Section(SECTION1_NAME, SCHEDULE_H0830, ROOM1_5, SUBJECT_MATH_01, S_FIRST_SEM);

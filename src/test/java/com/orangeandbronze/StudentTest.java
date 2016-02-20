@@ -1,19 +1,8 @@
 package com.orangeandbronze;
 
 
-import static com.orangeandbronze.Default.ROOM103;
-import static com.orangeandbronze.Default.ROOM1_5;
-import static com.orangeandbronze.Default.ROOM2_2;
-import static com.orangeandbronze.Default.SCHEDULE_H0830;
-import static com.orangeandbronze.Default.SCHEDULE_H1000;
-import static com.orangeandbronze.Default.SECTION1_NAME;
-import static com.orangeandbronze.Default.SECTION2_NAME;
-import static com.orangeandbronze.Default.SECTION3_NAME;
-import static com.orangeandbronze.Default.SUBJECT_MATH_01;
-import static com.orangeandbronze.Default.SUBJECT_MATH_02;
+import static com.orangeandbronze.Default.*;
 import static com.orangeandbronze.SemesterEnum.S_FIRST_SEM;
-import static com.orangeandbronze.Default.SECTION1;
-import static com.orangeandbronze.Default.SECTION1_1;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Ignore;
@@ -62,6 +51,28 @@ public class StudentTest {
         student3.enlist(section);
     }
 
+    //Test for no same subjects -Renz
+    @Test
+    public void enlistOneStudentWithDifferentSectionAndDifferentSubject(){
+        Section section = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_01, S_FIRST_SEM);
+        Section section2 = new Section(SECTION2_NAME, SCHEDULE_H1000, ROOM2_2, SUBJECT_ENGLISH_01, S_FIRST_SEM);
+
+        Student student = new Student(1);
+        student.enlist(section);
+        student.enlist(section2);
+    }
+
+    //Test for two student enlistment with same subject -Renz
+    @Test
+    public void enlistTwoStudentWithSameSectionAndSameSubject(){
+        Section section = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_01, S_FIRST_SEM);
+        Student student = new Student(1);
+        Student student2 = new Student(2);
+
+        student.enlist(section);
+        student2.enlist(section);
+    }
+
     @Test(expected = ExistingSubjectException.class)
     public void checkIfSubjectIsAlreadyAddedToAnyOfTheAddedSection() {
         Section section = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_01, S_FIRST_SEM);
@@ -71,6 +82,7 @@ public class StudentTest {
         student.enlist(section);
         student.enlist(section2);
     }
+
 
     // Test for prerequisite
     @Ignore
