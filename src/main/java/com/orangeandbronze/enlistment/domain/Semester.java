@@ -14,4 +14,8 @@ public class Semester {
 		this.section = section;
 		this.semesterId = semesterId;
 	}
+	
+	public Section getSection(){
+		return section;
+	}
 }

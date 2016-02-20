@@ -17,5 +17,17 @@ public class StudentSemEnlistments {
 	void addStudentSemester(){
 		studentSemesters.add(this);
 	}
+	
+	public Collection<Semester> getStudentSemesters(Student student){
+		Collection<Semester> studentNoSemesters = new ArrayList<>();
+		for(StudentSemEnlistments studentEnlistment: studentSemesters){
+			Student studentInList = studentEnlistment.student;
+			Semester semester = studentEnlistment.semester;
+			if(studentInList.equals(student)){
+				studentNoSemesters.add(semester);
+			}
+		}
+		return studentNoSemesters;
+	}
 
 }
