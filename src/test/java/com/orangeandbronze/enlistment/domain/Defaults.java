@@ -11,5 +11,4 @@ public class Defaults {
 	public final static Schedule SCHEDULE = new Schedule(MTH, H0830);
 	final static Schedule SCHEDULE2 = new Schedule(WS, H0830);
 	final static Schedule SCHEDULE3 = new Schedule(TF, H0830);
-
 }

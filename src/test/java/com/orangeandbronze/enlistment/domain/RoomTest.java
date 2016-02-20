@@ -23,5 +23,5 @@ public class RoomTest {
 	public void roomIdHasUnderScore(){
 		new Room( "test_room", 5);
 	}
-
+	
 }

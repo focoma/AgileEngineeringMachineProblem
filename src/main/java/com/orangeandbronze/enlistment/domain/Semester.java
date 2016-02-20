@@ -14,5 +14,4 @@ public class Semester {
 		this.section = section;
 		this.semesterId = semesterId;
 	}
-
 }
