@@ -22,15 +22,10 @@ public class Student {
         for (Section currentSection : sections) {
             currentSection.checkForConflictWith(newSection);
             currentSection.checkForExistingSubject(newSection);
-            /**
-             * Consider the following
-             * * Previous Semester.
-             */
 
-            if(newSection.getSubject().getSubjectIdPrerequisite() != null  &&
-                    newSection.getSemester().getSemesterNum() > currentSection.getSemester().getSemesterNum() &&
-                    (newSection.getSubject().getSubjectIdPrerequisite() !=  currentSection.getSubject().getSubjectId())) {
-                // check semester
+            if(newSection.getSubjectPrerequisite() != null  &&
+//                    newSection.getSemester().getSemesterNum() > currentSection.getSemester().getSemesterNum() &&
+                    (newSection.getSubjectPrerequisite() !=  currentSection.getSubjectId())) {
                 throw new SubjectPrerequisiteException("Subject: " + newSection.getSubject().getSubjectIdPrerequisite()  +  " has a prerequisite to subject: " + currentSection.getSubject().getSubjectId());
             }
         }
@@ -50,8 +45,8 @@ public class Student {
         }
 
 
-        	sections.add(newSection);
-            newSection.setStudentCounter();
+        sections.add(newSection);
+        newSection.setStudentCounter();
 
         
         // Cannot Enlist in section, if any of his currently-enlisted sections

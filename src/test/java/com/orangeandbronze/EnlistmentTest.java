@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
  */
 public class EnlistmentTest {
 
-    //Test for no same subjects -Renz
     @Test
     public void enlistOneStudentWithDifferentSectionAndDifferentSubject() {
         Section section = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_01, S_FIRST_SEM);
@@ -28,7 +27,6 @@ public class EnlistmentTest {
         student.enlist(section2);
     }
 
-    //Test for Same section and diff subjects -Renz
     @Test
     public void enlistOneStudentWithSameSectionAndDifferentSubject() {
         Section section = new Section(SECTION3_NAME, SCHEDULE_H0830, ROOM2_2, SUBJECT_MATH_01, S_FIRST_SEM);

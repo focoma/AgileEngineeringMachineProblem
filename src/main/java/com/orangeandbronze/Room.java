@@ -29,11 +29,6 @@ public class Room {
         return maxCapacity;
     }
 
-    public void checkRoomCapacity() {
-        // count number of section of selected Room;
-
-    }
-
     @Override
     public String toString() {
         return "Room name " + roomName;

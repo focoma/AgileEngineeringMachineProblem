@@ -2,14 +2,13 @@ package com.orangeandbronze;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.IllegalFormatCodePointException;
 
 public class Section {
 
     private final String sectionId;
     private final Schedule schedule;
     private final Room room;
-    private final Collection<Student> classList = new HashSet<Student>();
+    private Collection<Student> classList = new HashSet<Student>();
     private int studentCounter;
     private final Subject subject;
     private final SemesterEnum semester;
@@ -18,17 +17,8 @@ public class Section {
         studentCounter++;
     }
 
-
-    public int getStudentCounter() {
-        return studentCounter;
-    }
-
     public int getRoomMaxCapacity() {
         return room.getMaxCapacity();
-    }
-
-    public SemesterEnum getSemester() {
-        return semester;
     }
 
     public boolean canAddNewSection() {
@@ -39,9 +29,8 @@ public class Section {
         return subject;
     }
 
-
-    public String getSectionid() {
-        return sectionId;
+    public Integer getSubjectId() {
+        return subject.getSubjectId();
     }
 
     public Section(String sectionId, 
@@ -71,21 +60,9 @@ public class Section {
         }
     }
 
-//    public void enlist(Student newStudent) {
-////        for (Student currentStudent : classList) {
-////            currentStudent.checkForConflictWith(newStudent);
-////        }
-//        if(studentCounter <= room.getMaxCapacity()) {
-//            classList.add(newStudent);
-//        } else {
-//            throw new RoomCapacityException(room+ " had reach it's maximum capacity"); 
-//        }
-//    }
-
-    Schedule getSchedule() {
-        return schedule;
+    public Integer getSubjectPrerequisite() {
+        return subject.getSubjectIdPrerequisite();
     }
-
 
     @Override
     public String toString() {
