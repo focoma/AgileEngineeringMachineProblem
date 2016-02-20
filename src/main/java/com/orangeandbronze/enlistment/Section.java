@@ -1,17 +1,20 @@
 package com.orangeandbronze.enlistment;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class Section {
 	private final String sectionId;
 	private final Schedule schedule;
 	private final Room room;
 	private final Subject subject;
+	private final int semester;
+	private Map<Integer, Collection<Student>> studentSectionsMap = new HashMap<>();
 	private Collection<Student> students = new HashSet<>();
 	
-	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
+	public Section(String sectionId, Schedule schedule, Room room, Subject subject, int semester) {
 		if(!sectionId.matches("^[a-zA-Z0-9]*$")) {
 			throw new SectionIdException(sectionId);
 		}
@@ -19,12 +22,14 @@ public class Section {
 		this.schedule = schedule;
 		this.room = room;
 		this.subject = subject;
+		this.semester = semester;
 	}
 	
 	void addStudentInSection(Integer newStudent) {
 		room.checkRoomCapacity(students.size());
 		subject.checkPreRequisites(subject);
 		students.add(new Student(newStudent));
+		studentSectionsMap.put(semester, students);
 	}
 	
 	void checkForConflictWith(Section other) {

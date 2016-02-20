@@ -14,8 +14,8 @@ public class StudentSemEnlistmentsTest {
 	@Test
 	public void addStudentAndSectionOneStudentTwoSection() {
 		Student student = new Student(1);
-		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"));
-		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H1600), new Room("CEAT101", 10), new Subject("English"));
+		Section sectionRose = new Section("ROSE", SCHEDULE, ROOM, new Subject("Math"), 1);
+		Section sectionSampaguita = new Section("SAMPAGUITA", new Schedule(Days.WS, Period.H1600), new Room("CEAT101", 10), new Subject("English"), 1);
 		StudentSemEnlistments studentSemEnlistments = new StudentSemEnlistments();
 		Collection<Section> sectionList = new HashSet<Section>();
 		sectionList.add(sectionRose);

@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class StudentSemEnlistments {
 	private Map<Student, Collection<Section>> studentKeyMap = new HashMap<>();
+	
 	void addStudentAndSection(Student student,Collection<Section> section) {
 		studentKeyMap.put(student, section);
 	}
