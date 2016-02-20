@@ -30,6 +30,10 @@ public class Section {
 		return subject;
 	}
 	
+	int getSemester(){
+		return semester;
+	}
+	
 	Set<Integer> getSemesters(){
 		return studentSectionsMap.keySet();
 	}

@@ -55,6 +55,15 @@ public class StudentSemEnlistmentsTest {
 		Student student = new Student(1);
 		Section sectionSampaguita = new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math1"), 1);
 		student.enlist(sectionSampaguita);
+		Section sectionRose = new Section("ROSE", new Schedule(Days.WS, Period.H1600), ROOM, new Subject("Math2", "Math1"), 2);
+		student.enlist(sectionRose);
+	}
+	
+	@Test (expected = StudentSemEnlistmentsException.class)
+	public void addStudentWithSubjectPreRequisiteTakenWithSameSemester() {
+		Student student = new Student(1);
+		Section sectionSampaguita = new Section("SAMPAGUITA", SCHEDULE, ROOM, new Subject("Math1"), 1);
+		student.enlist(sectionSampaguita);
 		Section sectionRose = new Section("ROSE", new Schedule(Days.WS, Period.H1600), ROOM, new Subject("Math2", "Math1"), 1);
 		student.enlist(sectionRose);
 	}
