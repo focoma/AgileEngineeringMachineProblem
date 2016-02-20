@@ -86,4 +86,15 @@ public class StudentTest {
 		student.enlist(section1);
 		student.enlist(section2);
 	}
+	
+	@Test(expected = SubjectPreRequisitiesException.class)
+	public void enlistToSectionWithSubjectPrereq() {
+		Student student = new Student(1);
+		Room room1 = new Room("R102", 2);
+		Room room2 = new Room("R103", 2);
+		Section section1 = new Section("A", SCHEDULE, 1, room1, Subject.Math3);
+		Section section2 = new Section("B", new Schedule(Days.TF, Period.H0830), 1, room2, Subject.Math2);
+		student.enlist(section1);
+		student.enlist(section2);
+	}
 }

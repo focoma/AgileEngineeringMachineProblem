@@ -14,17 +14,12 @@ public class SubjectTest {
 	}
 	
 	@Test
-	public void preRequesitesSubjectTest() {
-		assertEquals(false, Math3.isPreRequisites(Math3,Math2));
-	}
-	
-	@Test
 	public void preRequesitesSubjectTest1() {
-	  assertEquals(false, Math1.isPreRequisites(Math1,Math2));
+	  assertEquals(false, Math1.isPreRequisites(Math2));
 	}
 	
 	@Test
 	public void preRequesitesSubjectTest2() {
-	  assertEquals(false, Math1.isPreRequisites(Math1,null));
+	  assertEquals(false, Math1.isPreRequisites(null));
 	}
 }

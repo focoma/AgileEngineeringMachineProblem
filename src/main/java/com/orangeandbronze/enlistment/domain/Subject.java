@@ -20,9 +20,9 @@ enum Subject {
 		return false;
 	}
 	
-	boolean isPreRequisites(Subject thisSubject, Subject otherSubject){
-		  if(thisSubject != null  && otherSubject != null){
-			 if(thisSubject.equals(otherSubject)){ 	
+	boolean isPreRequisites(Subject otherSubject){
+		  if(preReq != null  && otherSubject != null){
+			 if(preReq.equals(otherSubject)){ 	
 					return true;
 			 }
 		  } 

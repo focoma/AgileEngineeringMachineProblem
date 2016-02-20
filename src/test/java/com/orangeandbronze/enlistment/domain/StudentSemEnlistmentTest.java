@@ -40,26 +40,26 @@ public class StudentSemEnlistmentTest {
 		assertTrue(sem1.size() + sem2.size() > 1);
 	}
 	
-	@Test(expected = SubjectPreRequisitiesException.class)
+	@Test(expected = SubjectConflictException.class)
 	public void checkIfStudenthasTakenTheSubject(){
 		Student student = new Student(1);
 		Section section = new Section("A", new Schedule(Days.MTH, Period.H1130), 1, new Room("P123", 2), Subject.Math2);
-		Section section1 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math2);
+		Section section1 =  new Section("A", new Schedule(Days.MTH, Period.H1430), 1, new Room("P123", 2), Subject.Math2);
 		Section section2 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math2);
 		StudentSemEnlistment semEnlist = new StudentSemEnlistment(student, student.getSections());
-		semEnlist.enlistInSection(section2);
-		semEnlist.enlistInSection(section1);
+		student.enlist(section1);
+		student.enlist(section2);
 	}
 	
 	@Test
 	public void checkIfStudenthasTakenTheSubjectError(){
 		Student student = new Student(1);
 		Section section = new Section("A", new Schedule(Days.MTH, Period.H1130), 1, new Room("P123", 2), Subject.Math1);
-		Section section1 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math2);
+		Section section1 =  new Section("A", new Schedule(Days.MTH, Period.H1430), 1, new Room("P123", 2), Subject.Math2);
 		Section section2 =  new Section("A", new Schedule(Days.MTH, Period.H1000), 1, new Room("P123", 2), Subject.Math3);
 		StudentSemEnlistment semEnlist = new StudentSemEnlistment(student, student.getSections());
-		semEnlist.enlistInSection(section);
-		semEnlist.enlistInSection(section1);
+		student.enlist(section1);
+		student.enlist(section2);
 		//semEnlist.enlistInSection(section3);
 	}
 

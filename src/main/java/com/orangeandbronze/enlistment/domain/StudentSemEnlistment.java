@@ -18,21 +18,15 @@ public class StudentSemEnlistment {
 		return student;
 	}
 	
-	private void checkIfPreRequisiteSubjectHasBeenTaken(Section section){
+	void checkIfPreRequisiteSubjectHasBeenTaken(Section section){
 		for(Section studentSections: student.getSections()){
-			if(studentSections.getSubject().isPreRequisites(studentSections.getSubject(),section.getSubject())){
+			System.out.println(studentSections.getSubject().isPreRequisites(section.getSubject()));;
+			if(studentSections.getSubject().isPreRequisites(section.getSubject())){
 			   throw new SubjectPreRequisitiesException(studentSections.getSubject(),section.getSubject());
 		   }	   
 		}	
 	}
 	
-    void enlistInSection(Section section){
-	   if(section.getSubject().hasPrerequisites()){
-		 checkIfPreRequisiteSubjectHasBeenTaken(section);
-       }   
-		student.enlist(section);
-    }
-
 	@Override
 	public String toString() {
 		return "StudentSemEnlistment [student=" + student +"]";

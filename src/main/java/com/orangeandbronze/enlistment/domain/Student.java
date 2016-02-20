@@ -16,10 +16,13 @@ public class Student {
 	
 	
 	public void enlist(Section newSection) {
+		StudentSemEnlistment studentSemEnlistment = new StudentSemEnlistment(this, this.getSections());
 		for(Section currentSection : sections) {
 			currentSection.checkForConflictWith(currentSection, newSection);
 			currentSection.checkSubjectConflictWith(studentNumber, currentSection, newSection);		
-
+			if(newSection.getSubject().hasPrerequisites()){
+				studentSemEnlistment.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
+			}
 		}
 		newSection.incrementStudentEnlistCounter();
 		sections.add(newSection);
