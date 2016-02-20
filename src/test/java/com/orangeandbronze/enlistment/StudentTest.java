@@ -44,7 +44,7 @@ public class StudentTest {
 		
 	@Test
 	public void enlistSectionWithoutExceedingRoomCapacity() {
-		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 2), new Subject("Math", "English"), 1);
+		Section sectionRose = new Section("ROSE", SCHEDULE, new Room("SECTION1", 2), new Subject("Math"), 1);
 		Student firstStudent = new Student(1);
 		Student secondStudent = new Student(2);
 		firstStudent.enlist(sectionRose);
@@ -68,6 +68,11 @@ public class StudentTest {
 		Student secondStudent = new Student(2);
 		firstStudent.enlist(sectionRose);
 		secondStudent.enlist(sectionRose);
+	}
+	
+	@Test (expected = StudentNumberException.class)
+	public void studentNumberNullValue(){
+		new Student(null);
 	}
 
 }

@@ -11,7 +11,7 @@ public class Student {
 	private StudentSemEnlistments studentSemEnlistments = new StudentSemEnlistments();
 	
 	public Student(Integer studentNumber) {
-		if(studentNumber < 0 || studentNumber == null) {
+		if(studentNumber == null || studentNumber < 0) {
 			throw new StudentNumberException(studentNumber);
 		}
 		this.studentNumber = studentNumber;
@@ -20,8 +20,10 @@ public class Student {
 	public void enlist(Section newSection) {
 		sections.forEach(currentSection -> currentSection.checkForConflictWith(newSection));
 		newSection.addStudentInSection(studentNumber);
+		studentSemEnlistments.checkStudentSameSubjectInSection(this, newSection);
+		studentSemEnlistments.checkPreRequisiteSubjectFromStudentEnlist(this, newSection);
 		sections.add(newSection);
-		studentSemEnlistments.addStudentAndSection(this, new HashSet(sections));
+		studentSemEnlistments.addStudentAndSection(this, new HashSet<Section>(sections));
 	}
 	
 	Collection<Section> getSections() {

@@ -2,19 +2,19 @@ package com.orangeandbronze.enlistment;
 
 public class Subject {
 	private final String subjectName;
-	private final String preRequisites;
+	private final String preRequisite;
 
 	public Subject(String subjectName) {
 		checkValidationWith(subjectName == null || subjectName.equals(""), "Error values for Subject: " + subjectName);
 		this.subjectName = subjectName;
-		this.preRequisites = "";
+		this.preRequisite = "";
 	}
 
 	public Subject(String subjectName, String preRequisites) {
 		checkValidationWith(hasSubjectAndPreRequisitesValidation(subjectName, preRequisites),
 				"Error values for Subject: " + subjectName + ", Pre-requisite: " + preRequisites);
 		this.subjectName = subjectName;
-		this.preRequisites = preRequisites;
+		this.preRequisite = preRequisites;
 	}
 
 	private boolean hasSubjectAndPreRequisitesValidation(String subject, String preRequisites) {
@@ -30,21 +30,25 @@ public class Subject {
 	}
 
 	void checkPreRequisites(Subject subj) {
-		if (preRequisites.equals(subj.getSubjectName())) {
+		if (preRequisite.equals(subj.getSubjectName())) {
 			throw new PreRequisiteSubjectRequiredException(
-					"The subject " + subj + " has a prerequisite of subject " + preRequisites);
+					"The subject " + subj + " has a prerequisite of subject " + preRequisite);
 		}
 	}
 
 	public String getSubjectName() {
 		return subjectName;
 	}
+	
+	public String getPreRequisiteSubjectName() {
+		return preRequisite;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((preRequisites == null) ? 0 : preRequisites.hashCode());
+		result = prime * result + ((preRequisite == null) ? 0 : preRequisite.hashCode());
 		result = prime * result + ((subjectName == null) ? 0 : subjectName.hashCode());
 		return result;
 	}
@@ -58,10 +62,10 @@ public class Subject {
 		if (getClass() != obj.getClass())
 			return false;
 		Subject other = (Subject) obj;
-		if (preRequisites == null) {
-			if (other.preRequisites != null)
+		if (preRequisite == null) {
+			if (other.preRequisite != null)
 				return false;
-		} else if (!preRequisites.equals(other.preRequisites))
+		} else if (!preRequisite.equals(other.preRequisite))
 			return false;
 		if (subjectName == null) {
 			if (other.subjectName != null)
@@ -73,7 +77,7 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "subjectName=" + subjectName + ", preRequisites=" + preRequisites + "";
+		return "subjectName=" + subjectName + ", preRequisites=" + preRequisite + "";
 	}
 
 }

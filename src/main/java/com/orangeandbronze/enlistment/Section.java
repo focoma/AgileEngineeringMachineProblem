@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Section {
 	private final String sectionId;
@@ -13,9 +14,9 @@ public class Section {
 	private final int semester;
 	private Map<Integer, Collection<Student>> studentSectionsMap = new HashMap<>();
 	private Collection<Student> students = new HashSet<>();
-	
+
 	public Section(String sectionId, Schedule schedule, Room room, Subject subject, int semester) {
-		if(!sectionId.matches("^[a-zA-Z0-9]*$")) {
+		if (checkValidationWithSectionId(sectionId)) {
 			throw new SectionIdException(sectionId);
 		}
 		this.sectionId = sectionId;
@@ -24,20 +25,32 @@ public class Section {
 		this.subject = subject;
 		this.semester = semester;
 	}
+
+	Subject getSubject(){
+		return subject;
+	}
 	
+	Set<Integer> getSemesters(){
+		return studentSectionsMap.keySet();
+	}
+
+	private boolean checkValidationWithSectionId(String sectionId) {
+		return sectionId == null || sectionId.equals("") || !sectionId.matches("^[a-zA-Z0-9]*$");
+	}
+
 	void addStudentInSection(Integer newStudent) {
 		room.checkRoomCapacity(students.size());
 		subject.checkPreRequisites(subject);
 		students.add(new Student(newStudent));
 		studentSectionsMap.put(semester, students);
 	}
-	
+
 	void checkForConflictWith(Section other) {
-	  if(schedule.equals(other.schedule)) {
-		throw new ScheduleConflictException(this, other);
-	  }
+		if (schedule.equals(other.schedule)) {
+			throw new ScheduleConflictException(this, other);
+		}
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -68,6 +81,5 @@ public class Section {
 			return false;
 		return true;
 	}
-	
-	
+
 }
