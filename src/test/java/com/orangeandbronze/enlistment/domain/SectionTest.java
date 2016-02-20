@@ -3,6 +3,7 @@ package com.orangeandbronze.enlistment.domain;
 import static org.junit.Assert.assertEquals;
 import static com.orangeandbronze.enlistment.domain.Defaults.*;
 import static org.junit.Assert.assertTrue;
+import static com.orangeandbronze.enlistment.domain.Subject.*;
 
 import org.junit.Test;
 public class SectionTest {
@@ -10,27 +11,27 @@ public class SectionTest {
 	@Test
 	public void sectionIdAlphaNumeric() {
 		Room room = new Room("R101", 10);
-		new Section("aBc123", SCHEDULE, room);
-		new Section("123", SCHEDULE, room);
+		new Section("aBc123", SCHEDULE, room, Subject.Math1);
+		new Section("123", SCHEDULE, room, Subject.Math1);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void sectionIdHasUnderscore() {
 		Room room = new Room("R101", 10);
-		new Section("hello_World", SCHEDULE, room);
+		new Section("hello_World", SCHEDULE, room, Subject.Math1);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void sectionIdHasAmpersand() {
 		Room room = new Room("R101", 10);
-		new Section("hello&World", SCHEDULE, room);
+		new Section("hello&World", SCHEDULE, room, Subject.Math1);
 	}
 	
 	@Test
 	public void addTwoSectionsToRoomWithoutScheduleConflict() {
 		Room room = new Room("R101", 10);
-		Section s1 = new Section("S1", SCHEDULE, room);
-		Section s2 = new Section("S2", new Schedule(Days.TF, Period.H0830), room);
+		Section s1 = new Section("S1", SCHEDULE, room, Subject.Math1);
+		Section s2 = new Section("S2", new Schedule(Days.TF, Period.H0830), room, Subject.Math1);
 		assertTrue(s1.getRoom().equals(s1.getRoom()));
 	}
 	
@@ -38,7 +39,7 @@ public class SectionTest {
 	public void incrementStudentEnlistCounterWithoutExceedingRoomCapacity() {
 		Student student = new Student(1);
 		Room room = new Room("R101", 10);
-		Section section = new Section("S1", SCHEDULE, room);
+		Section section = new Section("S1", SCHEDULE, room, Subject.Math1);
 		section.incrementStudentEnlistCounter();
 		assertEquals(1, section.getStudentEnlistCounter());
 	}
@@ -47,7 +48,7 @@ public class SectionTest {
 	public void incrementStudentEnlistCounterExceedsRoomCapacity() {
 		Student student1 = new Student(1);
 		Room room = new Room("R101", 1);
-		Section section = new Section("S1", SCHEDULE, room);
+		Section section = new Section("S1", SCHEDULE, room, Subject.Math1);
 		for(int i = 1; i <= 3; i++) {
 			section.incrementStudentEnlistCounter();
 		}

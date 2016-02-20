@@ -2,7 +2,10 @@ package com.orangeandbronze.enlistment.domain;
 
 enum Subject {
     None(null), Math1(null), Math2(Math1), Math3(Math2);
-	private final Subject preReq;
+	
+	private Subject preReq;
+	
+	
 	Subject(Subject preReq){
 	  this.preReq = preReq;
     }

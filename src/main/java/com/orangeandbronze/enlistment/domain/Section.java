@@ -5,15 +5,18 @@ public class Section {
 	private final Schedule schedule;
 	private final Room room;
 	private int studentEnlistCounter;
+	private final Subject subject;
 	
 	
-	public Section(String sectionId, Schedule schedule, Room room) {
+	
+	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
 		if(!sectionId.matches("^[A-Za-z0-9]+$")) {
 			throw new IllegalArgumentException("Section Id must be alpha-numeric");
 		}
 		this.schedule = schedule;
 		this.sectionId = sectionId;
 		this.room = room;
+		this.subject = subject;
 		
 	}
 	
