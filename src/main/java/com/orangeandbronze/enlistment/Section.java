@@ -52,6 +52,8 @@ public class Section {
 	void checkForConflictWith(Section other) {
 		if (schedule.equals(other.schedule)) {
 			throw new ScheduleConflictException(this, other);
+		} else {
+		  schedule.checkPeriodConflict(other.schedule);
 		}
 	}
 

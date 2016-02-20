@@ -1,7 +1,6 @@
 package com.orangeandbronze.enlistment;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
@@ -24,8 +23,8 @@ public class EnlistServiceTest {
 		service.setSectionDao(sectionDao);
 
 		when(studentDao.getStudentNo(studentNo)).thenReturn(new Student(studentNo));
-		when(sectionDao.getSectionId(sectionId))
-				.thenReturn(new Section(sectionId, Defaults.SCHEDULE, new Room("GDO101", 2), new Subject("Math"), 1));
+		when(sectionDao.getSectionId(sectionId)).thenReturn(new Section(sectionId, new Schedule(Days.MTH, Period.H0830),
+				new Room("GDO101", 2), new Subject("Math"), 1));
 
 	}
 }

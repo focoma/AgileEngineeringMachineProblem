@@ -1,11 +1,11 @@
 package com.orangeandbronze.enlistment;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-import static com.orangeandbronze.enlistment.Defaults.*;
 
 public class SectionTest {
+	
+	private final Schedule SCHEDULE = new Schedule(Days.MTH, Period.H0830);
+	private final Room ROOM = new Room("SDFRT2", 40);
 
 	@Test
 	public void sectionIdAlphanumeric() {

@@ -1,8 +1,6 @@
 package com.orangeandbronze.enlistment;
 
-import static com.orangeandbronze.enlistment.Defaults.ROOM;
-import static com.orangeandbronze.enlistment.Defaults.SCHEDULE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -10,6 +8,9 @@ import java.util.HashSet;
 import org.junit.Test;
 
 public class StudentSemEnlistmentsTest {
+	
+	private final Schedule SCHEDULE = new Schedule(Days.MTH, Period.H0830);
+	private final Room ROOM = new Room("SDFRT2", 40);
 
 	@Test
 	public void addStudentAndSectionOneStudentTwoSection() {

@@ -1,9 +1,5 @@
 package com.orangeandbronze.enlistment;
 
-import static com.orangeandbronze.enlistment.Defaults.ROOM;
-import static com.orangeandbronze.enlistment.Defaults.SCHEDULE;
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class RoomTest {
