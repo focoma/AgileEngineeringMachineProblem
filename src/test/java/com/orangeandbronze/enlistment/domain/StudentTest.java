@@ -1,9 +1,9 @@
 package com.orangeandbronze.enlistment.domain;
 
 import static org.junit.Assert.assertTrue;
-import com.orangeandbronze.enlistment.domain.Defaults;
 import org.junit.Test;
 import static com.orangeandbronze.enlistment.domain.Defaults.*;
+
 public class StudentTest {
 
 	@Test
@@ -47,6 +47,18 @@ public class StudentTest {
 		student2.enlist(s1);
 		student3.enlist(s1);
 		student4.enlist(s1);
+	}
+	
+	@Test(expected = ExceedsRoomCapacityException.class) 
+	public void enlist3StudentsInSameSection(){
+		Student stud1 = new Student(1);
+		Student stud2 = new Student(2);
+		Student stud3 = new Student(3);
+		Room room1 = new Room("S123", 2);
+		Section section = new Section("A", SCHEDULE, room1);
+		stud1.enlist(section);
+		stud2.enlist(section);
+		stud3.enlist(section);
 	}
 
 }
