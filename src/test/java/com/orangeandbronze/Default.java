@@ -37,6 +37,8 @@ public class Default {
     
     public final static Subject SUBJECT_MATH_01 = new Subject(1, new SubjectPrerequisite(null));
     public final static Subject SUBJECT_MATH_02 = new Subject(2, new SubjectPrerequisite(1));
+
+    //Added for enlistment test -Renz
     public final static Subject SUBJECT_ENGLISH_01 = new Subject(3, new SubjectPrerequisite(null));
     
     

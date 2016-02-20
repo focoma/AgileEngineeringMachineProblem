@@ -22,6 +22,5 @@ public class Subject {
 		this.subjectId = subjectId;
 		this.subjectPrerequisite = subjectPrerequisite;
 	}
-	
-	
+
 }

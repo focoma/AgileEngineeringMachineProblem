@@ -2,6 +2,7 @@ package com.orangeandbronze;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.IllegalFormatCodePointException;
 
 public class Section {
 
@@ -10,35 +11,34 @@ public class Section {
     private final Room room;
     private final Collection<Student> classList = new HashSet<Student>();
     private int studentCounter;
-	private final Subject subject;
-	private final SemesterEnum semester;
-    
+    private final Subject subject;
+    private final SemesterEnum semester;
+
     public void setStudentCounter() {
-    	studentCounter++;
-    }
-    
-   
-    
-    public int getStudentCounter() {
-    	return studentCounter;
-    }
-    
-    public int getRoomMaxCapacity() {
-    	return room.getMaxCapacity();
-    }
-    
-    public boolean canAddNewSection() {
-    	return studentCounter < getRoomMaxCapacity();
-    }
-    
-    public Subject getSubject() {
-    	return subject;
+        studentCounter++;
     }
 
-    public Section(String sectionId, 
-    		Schedule schedule, 
-    		Room room, 
-    		Subject subject, SemesterEnum semester) {
+
+    public int getStudentCounter() {
+        return studentCounter;
+    }
+
+    public int getRoomMaxCapacity() {
+        return room.getMaxCapacity();
+    }
+
+    public boolean canAddNewSection() {
+        return studentCounter < getRoomMaxCapacity();
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public Section(String sectionId,
+                   Schedule schedule,
+                   Room room,
+                   Subject subject, SemesterEnum semester) {
         if (!sectionId.matches("^[a-zA-Z0-9]*$")) {
             throw new IllegalArgumentException("Section ID must be alphanumeric, was: " + sectionId);
         }
@@ -49,16 +49,15 @@ public class Section {
         this.semester = semester;
     }
 
-
     void checkForConflictWith(Section other) {
         if (this.schedule.equals(other.schedule)) {
             throw new ScheduleConflictException(this, other);
         }
     }
-    
+
     void checkForExistingSubject(Section newSection) {
-    	if(newSection.getSubject() == getSubject()){
-        	throw new ExistingSubjectException(newSection.getSubject());
+        if (newSection.getSubject() == getSubject()) {
+            throw new ExistingSubjectException(newSection.getSubject());
         }
     }
 
@@ -77,16 +76,15 @@ public class Section {
         return schedule;
     }
 
-    
 
     @Override
-	public String toString() {
-		return "Section [sectionId=" + sectionId + ", schedule=" + schedule + ", room=" + room + ", classList="
-				+ classList + ", studentCounter=" + studentCounter + ", subject=" + subject + ", semester=" + semester
-				+ "]";
-	}
+    public String toString() {
+        return "Section [sectionId=" + sectionId + ", schedule=" + schedule + ", room=" + room + ", classList="
+                + classList + ", studentCounter=" + studentCounter + ", subject=" + subject + ", semester=" + semester
+                + "]";
+    }
 
-	@Override
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

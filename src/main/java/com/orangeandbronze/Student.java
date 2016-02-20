@@ -26,7 +26,8 @@ public class Student {
 //            if(currentSection.getSubject().){
 //            	
 //            }
-            
+
+
             
         }
         
@@ -40,9 +41,9 @@ public class Student {
         
         // Cannot Enlist in section, if any of his currently-enlisted sections
         // has the same subject as that section
-        
-        
-        
+
+
+
     }
 
     void checkForConflictWith(Student other) {

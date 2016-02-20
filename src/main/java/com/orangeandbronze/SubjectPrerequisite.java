@@ -3,11 +3,11 @@ package com.orangeandbronze;
 import org.hamcrest.core.Is;
 
 public class SubjectPrerequisite {
-	private final Integer id;
+	private final Integer subjectPreRequisiteId;
 	
-	public SubjectPrerequisite(Integer id) {
+	public SubjectPrerequisite(Integer subjectPreRequisiteId) {
 		super();
-		this.id = id;
+		this.subjectPreRequisiteId = subjectPreRequisiteId;
 	}
 
 }

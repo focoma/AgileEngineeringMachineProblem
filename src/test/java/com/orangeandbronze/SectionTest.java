@@ -15,10 +15,19 @@ public class SectionTest {
     public void sectionIdAlphanumeric() {
         new Section(SECTION1_NAME, SCHEDULE_H0830 , new Room(ROOM101, 2), SUBJECT_MATH_02, S_FIRST_SEM);
     }
-    
-    // Test Scenarios
-    // Should not add the same section with the same subject.
-    
-    // Section Name, Schedule, Room
 
+    @Test(expected = IllegalArgumentException.class)
+    public void sectionIdHasUnderscore() {
+        new Section("hello_world", SCHEDULE_H0830 , new Room(ROOM101, 2), SUBJECT_MATH_02, S_FIRST_SEM);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void sectionIdHasWhiteSpace() {
+        new Section("hello world", SCHEDULE_H0830 , new Room(ROOM101, 2), SUBJECT_MATH_02, S_FIRST_SEM);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void sectionIdHasAmpersand() {
+        new Section("hello&world", SCHEDULE_H0830 , new Room(ROOM101, 2), SUBJECT_MATH_02, S_FIRST_SEM);
+    }
 }
