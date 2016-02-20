@@ -6,9 +6,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.orangeandbronze.enlistment.domain.Schedule;
+import static com.orangeandbronze.enlistment.domain.Subject.*;
+
 public class Defaults {
 
 	public final static Schedule SCHEDULE = new Schedule(MTH, H0830);
 	final static Schedule SCHEDULE2 = new Schedule(WS, H0830);
 	final static Schedule SCHEDULE3 = new Schedule(TF, H0830);
+	public final static Subject SUBJECT_WITH_PREREQ = Subject.Math2;
+	public final static Subject SUBJECT_NO_PREREQ = Subject.Math1;
 }
