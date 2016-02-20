@@ -1,5 +1,6 @@
 package com.orangeandbronze.enlistment;
 
+import java.nio.channels.ShutdownChannelGroupException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -7,6 +8,7 @@ import java.util.HashSet;
 public class Student {
 	private final Integer studentNumber;
 	private final Collection<Section> sections = new HashSet<>();
+	private StudentSemEnlistments studentSemEnlistments = new StudentSemEnlistments();
 	
 	public Student(Integer studentNumber) {
 		if(studentNumber == null || studentNumber < 0) {
@@ -19,6 +21,7 @@ public class Student {
 		sections.forEach(currentSection -> currentSection.checkForConflictWith(newSection));
 		newSection.addStudentInSection(studentNumber);
 		sections.add(newSection);
+		studentSemEnlistments.addStudentAndSection(this, new HashSet<Section>(sections));
 	}
 	
 	Collection<Section> getSections() {

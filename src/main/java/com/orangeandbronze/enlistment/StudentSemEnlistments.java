@@ -12,7 +12,7 @@ public class StudentSemEnlistments {
 		studentKeyMap.put(student, section);
 	}
 	
-	Collection getSections(Student student) {
+	Collection getStudentSectionsBySem(Student student, int semester) {
 		  return new ArrayList(studentKeyMap.get(student));
 	}
 	

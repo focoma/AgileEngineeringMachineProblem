@@ -21,7 +21,7 @@ public class StudentSemEnlistmentsTest {
 		sectionList.add(sectionRose);
 		sectionList.add(sectionSampaguita);
 		studentSemEnlistments.addStudentAndSection(student, sectionList);
-		assertEquals(2, studentSemEnlistments.getSections(student).size());
+		assertEquals(2, studentSemEnlistments.getStudentSectionsBySem(student, 1).size());
 	}
 
 }
