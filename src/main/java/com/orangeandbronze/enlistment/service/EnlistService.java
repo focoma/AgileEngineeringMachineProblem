@@ -9,11 +9,11 @@ public class EnlistService {
 	private StudentDAO studentDao;
 	
 	public void enlist(int studentNo, String sectionId) {
-		Student student = studentDao.findByStudentId(studentNo);
+		/*Student student = studentDao.findByStudentId(studentNo);
 		Section section = sectionDao.findBySectionId(sectionId);
 		student.enlist(section);
 		studentDao.addStudentSemester(student, section.getSemester());
-		studentDao.save(student);
+		studentDao.save(student);*/
 	}
 
 	public void setSectionDao(SectionDAO sectionDao) {
