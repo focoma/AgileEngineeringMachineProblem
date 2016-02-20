@@ -67,7 +67,7 @@ public class RoomTest {
         Student student4 = new Student(004);
 
         Section section1 = new Section("Section1", SCHEDULE_H0830, new Room(ROOM101, 3), SUBJECT_MATH_01, S_FIRST_SEM);
-        Section section2 = new Section("Section2", new Schedule(Days.TF, Period.H0830), new Room(ROOM101, 4), SUBJECT_SCIENCE_01, S_FIRST_SEM);
+        Section section2 = new Section("Section2", SCHEDULE_H1000, new Room(ROOM101, 4), SUBJECT_SCIENCE_01, S_FIRST_SEM);
 
         student1.enlist(section1);
         student2.enlist(section1);
@@ -79,7 +79,7 @@ public class RoomTest {
         Student student2 = new Student(2);
 
 
-        Section section = new Section(SECTION1_NAME, new Schedule(Days.MTH, Period.H0830), new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
+        Section section = new Section(SECTION1_NAME, SCHEDULE_H1000, new Room(ROOM103, 3), SUBJECT_MATH_01, S_FIRST_SEM);
         student.enlist(section);
         student2.enlist(section);
     }
@@ -94,4 +94,5 @@ public class RoomTest {
         student2.enlist(section);
         student3.enlist(section);
     }
+
 }
