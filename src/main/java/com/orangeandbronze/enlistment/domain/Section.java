@@ -38,6 +38,12 @@ public class Section {
 		studentEnlistCounter++;
 	}
 	
+	public void checkSubjectConflictWith(int studentNumber, Section currentSection, Section newSection) {
+		if(currentSection.subject.equals(newSection.subject)) {
+			throw new SubjectConflictException("Subject " + newSection.getSubject() + " has already enlisted to Student : " + studentNumber);
+		}
+	}
+	
 	boolean hasSlotAvailable() {
 		return studentEnlistCounter < room.getRoomMaxCapacity();
 	}

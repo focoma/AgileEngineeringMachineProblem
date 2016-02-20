@@ -19,15 +19,9 @@ public class Student {
 			currentSection.checkForConflictWith(currentSection, newSection);
 
 //		    currentSection.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
-			if(currentSection.getSubject().equals(newSection.getSubject())) {
-				throw new SubjectConflictException("Subject " + newSection.getSubject() + " has already enlisted to Student : " + studentNumber);
-			}
 
-//		    currentSection.checkIfPreRequisiteSubjectHasBeenTaken(newSection);
-			
-			if(currentSection.getSubject().equals(newSection.getSubject())) {
-				throw new SubjectConflictException("Subject " + newSection.getSubject() + " has already enlisted to Student : " + studentNumber);
-			}
+			currentSection.checkSubjectConflictWith(studentNumber, currentSection, newSection);		
+
 		}
 		newSection.incrementStudentEnlistCounter();
 		sections.add(newSection);
