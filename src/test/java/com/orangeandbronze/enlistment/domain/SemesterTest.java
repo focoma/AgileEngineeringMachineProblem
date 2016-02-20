@@ -26,5 +26,4 @@ public class SemesterTest {
 		Section section = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("S120", 25), Subject.Math1);
 		new Semester(1, student, section);
 	}
-
 }

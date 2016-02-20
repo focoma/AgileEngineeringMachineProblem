@@ -20,5 +20,4 @@ public class SubjectTest {
 	public void preRequesitesSubjectTest1() {
 	//	assertEquals(false, Math1.checkIfSubjectHasPreRequisites(null));
 	}
-
 }

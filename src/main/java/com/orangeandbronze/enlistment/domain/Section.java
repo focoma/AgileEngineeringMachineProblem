@@ -7,8 +7,6 @@ public class Section {
 	private int studentEnlistCounter;
 	private final Subject subject;
 	
-	
-	
 	public Section(String sectionId, Schedule schedule, Room room, Subject subject) {
 		if(!sectionId.matches("^[A-Za-z0-9]+$")) {
 			throw new IllegalArgumentException("Section Id must be alpha-numeric");

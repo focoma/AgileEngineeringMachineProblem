@@ -2,7 +2,6 @@ package com.orangeandbronze.enlistment.domain;
 
 enum Subject {
 
-
     Math1, Math2(Math1), Math3(Math2);
 	private  Subject preReq;
 

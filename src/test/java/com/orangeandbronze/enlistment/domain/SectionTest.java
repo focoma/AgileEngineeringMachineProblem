@@ -61,21 +61,21 @@ public class SectionTest {
 	
 	@Test
 	public void sectionsWithDiffSchedButSameRoom(){
-		new Section("A", SCHEDULE, ROOM);
-		new Section("B", SCHEDULE2, ROOM);
-		new Section("C", SCHEDULE3, ROOM);
+		new Section("A", SCHEDULE, ROOM, Subject.Math1);
+		new Section("B", SCHEDULE2, ROOM, Subject.Math1);
+		new Section("C", SCHEDULE3, ROOM, Subject.Math1);
 	}
 	
 	@Test
 	public void sectionsWithSameSchedDifferentRooms(){
-		new Section("A", SCHEDULE, ROOM);
-		new Section("B", SCHEDULE, new Room("A412", 25));
+		new Section("A", SCHEDULE, ROOM, Subject.Math1);
+		new Section("B", SCHEDULE, new Room("A412", 25), Subject.Math1);
 	}
 	
 	@Test
 	public void sectionsWithSameIdDifferentSchedAndRooms(){
-		new Section("A", SCHEDULE, ROOM);
-		new Section("A", SCHEDULE, new Room("A412", 25));
+		new Section("A", SCHEDULE, ROOM, Subject.Math1);
+		new Section("A", SCHEDULE, new Room("A412", 25), Subject.Math1);
 	}
 }
 

@@ -11,7 +11,6 @@ public class EnlistServiceTest {
 	
 	@Test
 	public void enlistServiceTest(){
-		SectionDAO secDao = mock(SectionDAO.class);
 		
 	}
 	

@@ -55,10 +55,9 @@ public class StudentTest {
 		Student stud2 = new Student(2);
 		Student stud3 = new Student(3);
 		Room room1 = new Room("S123", 2);
-		Section section = new Section("A", SCHEDULE, room1);
+		Section section = new Section("A", SCHEDULE, room1, Subject.Math1);
 		stud1.enlist(section);
 		stud2.enlist(section);
 		stud3.enlist(section);
 	}
-
 }
